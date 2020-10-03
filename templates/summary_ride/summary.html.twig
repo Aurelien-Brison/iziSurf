@@ -1,0 +1,55 @@
+<div class="row justify-content-center summaryRide__destination">
+    <h2>{{ currentRide.cityDeparture }} </h2>
+    {% if currentRide.returnDate|date("Y") == 1900 %}
+        <span> <i class="fas fa-arrow-right"> </i></span>
+    {% else %}
+        <span> <i class="fas fa-exchange-alt"> </i></span>
+    {% endif %}
+    <h2> {{ currentRide.spot.name }}</h2>
+</div>
+<div class="row justify-content-center summaryRide__square">
+    <div class="row">
+        <div class="col-12">
+            <p class="summaryRide__details">Détails du trajet</p>
+        </div>
+        <div class="px-4 col-sm-5 offset-sm-1 col-md-5 offset-md-1 col-lg-4 offset-lg-2 col-xl-5 offset-xl-1">
+            <p class="summaryRide__details-bold">Aller : <span class="js-search-departureDate summaryRide__details-regular">{{ currentRide.departureDate|date("Y-m-d") }} </span> <span class="summaryRide__details-regular">à {{ currentRide.departureHour|date("H:i") }}</span></p>  
+            <p class="summaryRide__details-bold">Lieu de rendez-vous : <span class="summaryRide__details-regular">{{ currentRide.placeDeparture }}</span></p>
+            {% if currentRide.returnDate|date("Y") == 1900 %}
+                <p class="summaryRide__details-bold">Pas de trajet retour</p>
+            {% else %}
+                <p class="summaryRide__details-bold">Retour : <span class="js-search-returnDate summaryRide__details-regular">{{ currentRide.returnDate|date("Y-m-d") }}</span> <span class="summaryRide__details-regular">à {{ currentRide.returnHour|date("H:i") }}</span></p>
+            {% endif %}
+            {% if (currentRide.isSameGender == 1) %}
+                <p class="summaryRide__details-bold">Trajet 100% mecs</p>
+            {% elseif (currentRide.isSameGender == 2) %}
+                <p class="summaryRide__details-bold">Trajet 100% nanas</p>
+            {% else %}
+                <p class="summaryRide__details-bold">Trajet mixte</p>
+            {% endif %}
+        </div>
+        <div class="px-4 col-sm-5">
+            <p class="summaryRide__details-bold">Véhicule : <span class="summaryRide__details-regular">{{ currentRide.car.brand }} {{ currentRide.car.model }}</span></p>
+            <p class="summaryRide__details-bold">Taille max des planches : <span class="summaryRide__details-regular">{{ currentRide.boardSizeMax }} "</span></p>
+            <p class="summaryRide__details-bold">Nombre max de planches dans la voiture : <span class="summaryRide__details-regular">{{ currentRide.boardMax }} </span></p> 
+            {% if currentRide.rideDescription == "" %}
+            {% else %}
+                <p class="summaryRide__details-bold">Infos complémentaires : <span class="summaryRide__details-regular">{{ currentRide.rideDescription }}</span></p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row summaryRide__price-container summaryRide-text-price">
+        <div class="col-sm-6 d-flex justify-content-end pr-5">
+            <p>{{ currentRide.price }} € / pers.
+        </div>
+        <div class="col-sm-6 d-flex justify-content-start pl-4">
+            {% if currentRide.availableSeat == 0 %}
+                <p>Trajet complet</p>
+            {% elseif currentRide.availableSeat == 1 %}
+                <p>{{ currentRide.availableSeat }} place restante</p>
+            {% else %}
+                <p>{{ currentRide.availableSeat }} places restantes</p>
+            {% endif %} 
+        </div>
+    </div>
+</div>

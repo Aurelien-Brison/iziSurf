@@ -1,0 +1,64 @@
+<div class="col-12">
+    <h2 class="summaryRide__passenger-type">Passagers refusés</h2>
+</div>
+{% if peoplesRefuse|length == 0 %}
+    <div class="col-12">
+        <p class="summaryRide__passenger-text no-passenger">Aucun passager refusé</p>
+    </div>
+{% else %}        
+    {% for  peopleRefuse in peoplesRefuse %}
+        <div class="one__people__accept">
+            <!-- Button trigger modal -->
+            <div class="button__modal">
+                <img type="button" data-toggle="modal" data-target="#{{peopleRefuse.user.firstname}}" src="{{asset('assets/images/users/' ~ peopleRefuse.user.filename )}}" class="rounded-circle summaryRide__passenger-picture" alt="photo">
+                <p class="summaryRide__passenger-text underline">{{ peopleRefuse.user.firstname }}</p>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="{{peopleRefuse.user.firstname}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p>Profil de {{peopleRefuse.user.firstname}}</p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p><img src="{{asset('assets/images/users/' ~ peopleRefuse.user.filename )}}" class="rounded-circle modal-picture" alt="photo"></p>
+                            <div class="modal__profil-info">
+                                <p>{{peopleRefuse.user.age}} ans</p>
+                                <p>Niveau {{peopleRefuse.user.level.name}}</p>
+                                <p>{{peopleRefuse.user.phone}}</p>
+                            </div>
+                            <div class="modal__comments">
+                                <h5 class="modal__comments-title">Avis</h5>
+                                {% if peopleRefuse.user.reviews is empty %}
+                                    <p>{{peopleRefuse.user.firstname}} n'a pas encore d'avis, sorry</p>
+                                {% else %}
+                                    {% for review in peopleRefuse.user.reviews %}              
+                                        {% if loop.revindex0 < 2 %}                             
+                                            <p>
+                                                <i class="fas modal-summary-fa-quote-left"></i>
+                                                <span class="allReviews-text">{{review.comment}}</span>
+                                                <span><i class="fas modal-summary-fa-quote-right"></i></span>
+                                            </p>
+                                            <div class="allReviews-date margin-modal-review-summary">
+                                                <p>* par {{review.author}}, le <span class="js-review-date">{{review.createdAt|date("Y-m-d")}}</span></p>
+                                            </div>        
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if peopleRefuse.user.reviews|length > 2 %}
+                                        <div class="see-more-reviews">
+                                            <a href="{{ path('review', {user: peopleRefuse.user.id}) }}">Voir tous les commentaires de {{ peopleRefuse.user.firstname }}</a>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      
+    {% endfor %}
+{% endif %}
+{# </div> #}

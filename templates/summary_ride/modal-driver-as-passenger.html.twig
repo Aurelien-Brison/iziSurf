@@ -1,0 +1,67 @@
+<div class="left__ride__block__info">
+    <!-- MODAL DRIVER -->
+    {% if (currentRide.driver.gender == "Féminin") %}
+        <h2 class="white__title summaryRide_margin-title">La conductrice</h2>
+    {% else %}
+         <h2 class="white__title summaryRide_margin-title">Le conducteur</h2>
+    {% endif %}
+    <div class="button__modal">
+        {% if (currentRide.driver.id == app.user.id) %}
+            <p class="you-are-the-driver">C'est toi !</p>
+            {% if peoplesWait|length == 0 and peoplesAccept|length == 0 and peoplesRefuse|length == 0  %}
+                <img type="button" data-toggle="modal" data-target="#{{currentRide.driver.firstname}}" src="{{asset('assets/images/users/' ~ currentRide.driver.filename )}}" class="rounded-circle summaryRide__driver-picture" alt="photo">
+            {% endif %}
+        {% else %}
+            <p class="summaryRide-check-driver" data-toggle="modal" data-target="#{{currentRide.driver.firstname}}">
+                <span class="you-are-not-the-driver">{{currentRide.driver.firstname}}</span>
+                <span class="summaryRide-checkProfile">Voir son profil et ses avis <i class="fas fa-caret-down"></i></span>
+                <img type="button" src="{{asset('assets/images/users/' ~ currentRide.driver.filename )}}" class="rounded-circle summaryRide__notDriver-picture" alt="photo">
+            </p>
+        {% endif %}
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="{{currentRide.driver.firstname}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p>Profil de {{currentRide.driver.firstname}}</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><img src="{{asset('assets/images/users/' ~ currentRide.driver.filename )}}" class="rounded-circle modal-picture" alt="photo"></p>
+                    <div class="modal__profil-info">
+                        <p>{{currentRide.driver.age}} ans</p>
+                        <p>Niveau {{currentRide.driver.level.name}}</p>
+                        <p>{{currentRide.driver.phone}}</p>
+                    </div>
+                    <div class="modal__comments">
+                        <h5 class="modal__comments-title">Avis</h5>
+                        {% if currentRide.driver.reviews is empty %}
+                            <p>{{currentRide.driver.firstname}} n'a pas encore d'avis, sorry</p>
+                        {% else %}
+                            {% for review in currentRide.driver.reviews %}              
+                                {% if loop.revindex0 < 2 %}                             
+                                    <p>
+                                        <i class="fas modal-summary-fa-quote-left"></i>
+                                        <span class="allReviews-text">{{review.comment}}</span>
+                                        <span><i class="fas modal-summary-fa-quote-right"></i></span>
+                                    </p>
+                                    <div class="allReviews-date">
+                                        <p>* par {{review.author}}, le <span class="js-review-date">{{review.createdAt|date("Y-m-d")}}</span></p>
+                                    </div>        
+                                {% endif %}
+                            {% endfor %}
+                            {% if currentRide.driver.reviews|length > 2 %}
+                                <div class="see-more-reviews">
+                                    <a href="{{ path('review', {user: currentRide.driver.id}) }}">Voir tous les avis de {{ currentRide.driver.firstname }}</a>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

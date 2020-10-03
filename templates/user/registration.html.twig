@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+<div class="main lightgreen">
+	<div class="container-fluid">
+    	<div class="row justify-content-center">
+      		<div class="col-xl-4 profile">
+				<h1 class="white__title">Inscription</h1>
+				<img class="signin-picture" src="{{ asset('assets/images/surf-point.png') }}">
+      		</div>
+			<div class="col-xl-8">
+				<div class="row signin-form">
+					<div class="offset-sm-2 col-sm-8 col-md-5 offset-md-0 col-lg-4 offset-lg-1 col-xl-5 offset-xl-0">
+						{{ form_start(form) }}
+						{{ form_row(form.firstname) }}
+						{{ form_row(form.lastname) }}
+						{{ form_row(form.age) }}
+						{{ form_row(form.gender) }}
+						{{ form_row(form.phone) }}
+					</div>
+					<div class="offset-sm-2 col-sm-8 col-md-5 offset-md-1 col-lg-4 offset-lg-1 col-xl-5 offset-xl-1">
+						{{ form_row(form.level) }}
+						{{ form_row(form.imageFile) }}
+						{{ form_row(form.email) }}
+						{{ form_row(form.password ) }}
+						{{ form_row(form.confirmPassword) }}
+						<div class="text-center">
+							<button type="submit" value="registration-validate" class="btn btn-orange">Valider</button>
+						</div>
+					</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+        <script>
+            $('.custom-file-input').on('change', function(event) {
+                var inputFile = event.currentTarget;
+                var name = inputFile.files[0].name;        
+                if(name.length >= 30) {
+                  var startName = name.substr(0, 30) + '...';
+                } else {
+                  startName = name;
+                }
+                console.log(startName);
+                $(inputFile).parent()
+                    .find('.custom-file-label')
+                    .text(startName);
+            });
+            
+        </script>
+{% endblock %}

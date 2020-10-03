@@ -1,0 +1,19 @@
+<div class="col-12 col-sm-6 d-flex justify-content-center justify-content-sm-end">
+    <a class="btn btn-delete-profile" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Annuler le trajet</a>
+</div>
+<div class="col-12 col-sm-6 d-flex justify-content-center justify-content-sm-start">
+    <a href="{{ path( 'ride_edit', {'slug': currentRide.slug} ) }}"> 
+        <button type="button" class="btn btn-ride-edit">Modifier le trajet</button>
+    </a>
+</div>
+<div class="summaryRide__cancel-modal col-12 col-sm-10">
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body modal-cancel-ride">
+            <form method="post" action="{{ path( 'ride_delete', {'id': currentRide.id} ) }}">
+                <input type="textarea" name ="delete" class="form-control" placeholder="Merci de nous dire pourquoi." required>
+                <button type"Submit" class="btn btn-white-white">Envoyer</button>
+            <form>
+        </div>
+    </div>
+</div>

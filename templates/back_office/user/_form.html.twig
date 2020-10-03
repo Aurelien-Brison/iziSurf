@@ -1,0 +1,24 @@
+{{ form_start(form) }}
+<div class="container-fluid signin__background">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-4">
+          {{ form_start(form) }}
+          {{ form_row(form.firstname) }}
+          {{ form_row(form.lastname) }}
+          {{ form_row(form.age) }}
+          {{ form_row(form.gender) }}
+          {{ form_row(form.phone) }}
+          {{ form_row(form.password) }}
+          {{ form_row(form.confirmPassword) }}
+        </div>
+        <div class="col-12 col-lg-4">
+          {{ form_row(form.email) }}
+          {{ form_row(form.level) }}
+          {{ form_row(form.imageFile) }}
+          <button class="btn">{{ button_label|default('Save') }}</button>
+          {{ form_end(form) }}
+        </div>
+      </div>
+  </div>
+    
+{{ form_end(form) }}

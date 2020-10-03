@@ -1,0 +1,2702 @@
+body {
+  font-family: 'Raleway', sans-serif;
+  width:100%; /* 2 */
+	min-height:100vh;
+	display:-webkit-flex; /* 3 */
+	display:flex;
+	-webkit-flex-direction:column; /* 3 */
+	flex-direction:column;
+}
+
+.container-fluid {
+  padding: 0;
+  /* flex-grow:1;  */
+}
+
+.main {
+  flex-grow:1; /* 4 */
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.col-6, .col-xl-6, .col-xs-6, .col-lg-6, .col-xl-12 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.col-xl-7, .col-lg-5 {
+  padding-left: 0;
+}
+
+.col-lg-5 {
+  padding-right: 0;
+}
+
+.col-xs-12 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/****************************************** FORMULAIRES ****************************************/
+
+.form-group {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.required {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.custom-errors {
+  background-color: #ffeecf;
+  font-weight: normal;
+  border-radius: 3px;
+  color: #761C24;
+  padding: 0.2rem 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 0.9em;
+}
+
+.form-check-input.is-invalid~.form-check-label, .was-validated .form-check-input:invalid~.form-check-label {
+  color: white;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+  border-color: #761C24;
+  background-image: none;
+}
+
+.form__title, .my-ride__title, .white__title, .profile__title {
+  margin: 3rem 0;
+  color: white;
+  font-family: 'Staatliches', cursive;
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.btn-orange {
+  background-color: #f5c181;
+  color: white;
+  font-weight: bold;
+  margin: 1.5rem 0 3rem 0;
+  padding: 0.4rem 0.7rem;
+  font-size: 1em;
+}
+
+.btn-red {
+  background-color: #e89f71;
+  color: white;
+  font-weight: bold;
+  margin: 1rem;
+  text-align: center;
+  font-size: 0.8em;
+  display: inline-block;
+  margin-left: 2rem;
+}
+
+.btn-lightgreen {
+  background-color: white;
+  color: #00a79d;
+  font-weight: bold;
+  margin: 1.5rem 0 3rem 0;
+  text-align: center;
+  border: none;
+  padding: 0.45rem 0.7rem;
+  font-size: 1em;
+}
+
+.btn-grey {
+  color: #41484e;
+  border: 1px solid white;
+  margin-top: 1.5rem;
+  background-color: #E9ECEF;
+  padding: 0.6rem 1rem;
+  border-radius: .25rem;
+}
+
+.form-left {
+  margin-top: 2rem;
+}
+
+.form-right {
+  margin-bottom: 2rem;
+}
+
+/****************************************** HEADER ****************************************/
+
+.header {
+  margin: 2rem 1rem;
+  font-family: 'Staatliches', cursive;
+}
+
+.header__name {
+  font-size: 3em;
+  color: #00a79d;
+  letter-spacing: 0.3rem;
+  margin-left: 1rem;
+}
+
+
+
+.header__description {
+  font-size: 2em;
+  margin-left: 1rem;
+}
+
+.header__menu {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.header__menu-link {
+  font-size: 1.3em;
+  margin: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.header__menu-link a {
+  padding-left: 1rem;
+}
+
+.navbar-toggler {
+  color: black;
+  border: none;
+}
+
+.collapse__menu {
+  float: right;
+}
+
+.collapse__menu a {
+  float: right;
+  padding-bottom: 0.5rem;
+}
+
+.collapse__item {
+  font-size: 1.3em;
+  padding: 1rem;
+}
+
+/* .navbar-toggler {
+  padding: 0;
+} */
+
+/****************************************** FOOTER ****************************************/
+
+.footer {
+  font-family: 'Staatliches', cursive;
+  background-color: #ffeecf;
+  text-align: center;
+}
+
+.footer__detail {
+  margin: 1.5rem auto;
+}
+
+/****************************************** PAGE ACCUEIL ****************************************/
+
+  .home__left {
+    background-image: url("../images/home-surf-van-500.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #FEF8D8;
+    height: 400px;
+  }
+
+  .home__right {
+    font-family: 'Staatliches', cursive;
+    background-color: #f5c181;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .home__buttons {
+    width: 70%;
+    height: 25%;
+    font-size: 2em;
+    border: 1px dotted white;
+    text-align: center;
+    color: white;
+    align-content: space-around;
+    margin: 4%;
+  }
+
+  .home__buttons a {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+  }
+
+  .row-white {
+    background-color: white;
+    padding-bottom: 2rem;
+  }
+
+  .home__rides {
+    color: white;
+    font-family: 'Staatliches', cursive;
+    font-size: 2em;
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  .home__rides-detail {
+    background-color: white;
+    text-align: center;
+    margin: 0 2rem 1rem 2rem;
+    padding: 1rem;
+    border: 1px dotted #f5c181;
+    display: inline-block;
+  }
+
+  .home__site-explanations {
+    padding: 0 4rem 4rem 4rem;
+    color: white;
+    text-align: center;
+    line-height: 1.5em;
+    font-size: 1.1em;
+  }
+
+  .home__rides-firstname {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  /****************************************** PAGE D'ACCUEIL UTILISATEURS CONNECTES ******************************************/
+
+.home-connected__left {
+  background-image: url("../images/home-surf-van-500.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #FEF8D8;
+  height: 500px;
+}
+
+.white-detail {
+  background-color: #007065;
+  color: white;
+  margin: 0 2rem 2rem 2rem;
+  border: 1px dotted white;
+}
+
+.home_van-icon {
+  margin: 1rem 0 2rem;
+}
+
+.fa-water {
+  color: white;
+  font-size: 1.5em;
+}
+
+.fa-smile-link, .fa-shuttle-van {
+  color: white;
+  font-size: 1.5em;
+}
+
+/****************************************** PAGE D'INSCRIPTION ******************************************/
+
+.signin-form {
+  margin: 3rem 0 0 3rem;
+}
+
+.signin-picture {
+  height: 20rem;
+  margin-top: 2rem;
+}
+
+.custom-file-label::after {
+  content: 'Parcourir';
+}
+
+/****************************************** PAGE DE CONNEXION/MOT DE PASSE OUBLIE ******************************************/
+
+.signin__explaination {
+  margin: 0 0 2rem 0;
+  color: white;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.5em;
+}
+
+.btn-alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+  margin: 0 auto 3rem auto;
+}
+
+.btn-alert-success {
+  background-color: #D4EDDA;
+  border-color: #D4EDDA;
+  color: #1A5724;
+  margin: 0 auto 3rem auto;
+}
+
+.custom-errors-login {
+  background-color: #ffeecf;
+  font-weight: normal;
+  border-radius: 3px;
+  color: #761C24;
+  padding: 0.2rem 0.5rem;
+  margin: 0 auto 1rem;
+  font-size: 0.9em;
+  display: inline-block;
+}
+
+
+/****************************************** PAGE QUI SOMMES NOUS ******************************************/
+
+.team__explaination {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  font-size: 1.4em;
+  color: white;
+  margin-bottom: 3rem;
+}
+
+.team__subtitle-tech {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  font-size: 1.4em;
+  color: #f5c181;
+  font-weight: bold;
+  margin: 2rem;
+}
+
+.team__explaination p {
+  padding: 0 0 0.8rem 0;
+}
+
+/****************************************** MENTIONS LEGALES ******************************************/
+
+.disclaimer__text {
+  text-align: justify;
+  color: white;
+}
+
+/****************************************** PAGE RECHERCHER UN TRAJET ******************************************/
+
+.search__background {
+  background-image: url("../images/orange-board-600.jpg");
+  background-color: #DCF8E0;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 208px);
+}
+
+.ride__form {
+  padding: 3rem 3rem 0 3rem;
+}
+
+.form-left {
+  margin-top: 0;
+}
+
+.form-right {
+  margin-bottom: 0;
+}
+
+.checkbox__return-text {
+  color: white;
+  font-weight: bold;
+  margin: 0.5rem 0 2rem 0.5rem;
+}
+
+/****************************************** PAGE RESULTATS DE RECHERCHE ******************************************/
+
+.result__background {
+  background-image: url("../images/orange-board-600.jpg");
+  background-color: #DCF8E0;
+  background-position: right 50% top 25%;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 208px);
+}
+
+.result__form {
+  margin-bottom: 3rem;
+}
+
+.result__title {
+  font-size: 1.3em;
+  text-align: center;
+  margin: 2rem 0 3rem 0;
+  color: #f5c181;
+  font-weight: bold;
+}
+
+.result__link {
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size: 1em;
+  line-height: 1.5em;
+  display: none;
+}
+
+.result__search-details {
+  display: flex;
+  justify-content: center;
+}
+
+.result__search-details-child {
+  color: white;
+  text-align: center;
+  line-height: 1.5em;
+  border: 1px dotted white;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-top: 3rem;
+  font-weight: bold;
+  display: block;
+}
+
+.result__detail {
+  text-align: center;
+  color: black;
+  font-size: 1em;
+  background-color: white;
+  margin: 0 auto 2rem auto;
+  font-weight: normal;
+  width: 26rem;
+}
+
+.result__detail-title {
+  padding: 1rem 0.5rem;
+  background-color: #f5c181;
+  color: white;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.result__detail-date {
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1.6em;
+}
+
+.result__detail-date-single {
+  width: 25%;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1.6em;
+}
+
+.result__detail-date-return {
+  width: 23%;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1.6em;
+}
+
+.result__detail-info {
+  width: 49%;
+  display: inline-block;
+  padding: 1rem 0;
+  line-height: 1.5em;
+  border-left: 1px dotted #f5c181;
+}
+
+.result__detail-info-return {
+  width: 50%;
+  display: inline-block;
+  padding: 1rem 0;
+  line-height: 1.5em;
+  border-left: 1px dotted #f5c181;
+}
+
+.result__detail-date-title {
+  margin-top: 1rem;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.result__detail-driver {
+  border-top: 1px dotted #f5c181;
+  background-color:  #ffeecf;
+}
+
+.result__detail-passenger {
+  border-top: 1px dotted #f5c181;
+  background-color:  white;
+  margin-top: 1rem;
+}
+
+.result__detail-price {
+  padding-left: 1rem;
+}
+
+.result__detail-driver-image {
+  width: 40%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.result__detail-image-profile {
+  border: 1px solid white;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin: 0.3rem auto;
+  float: right;
+}
+
+.result__detail-driver-info {
+  width: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  margin-left: 2rem;
+  font-weight: bold;
+}
+
+.result__detail-driver-level {
+  font-weight: normal;
+}
+
+.search-fa-exchange-alt:before {
+  content: "\f362";
+  color: #f5c181;
+}
+
+.search-fa-grip-lines-vertical:before {
+  content: "\f7a5";
+  color: #f5c181;
+}
+
+.search-fa-arrow-right:before {
+  content: "\f061";
+  color: #f5c181;
+}
+
+.fa-map-marker:before, .fa-calendar:before {
+  color: #f5c181;
+}
+
+.result-fa-user:before {
+  content: "\f007";
+  color: #f5c181;
+}
+
+.fa-exchange-alt:before, .fa-grip-lines-vertical:before, .fa-arrow-right:before{
+  color: #ffeecf;
+  margin: 0 0.5rem;
+}
+
+.noresult {
+  font-size: 1em;
+}
+
+.noresult {
+  font-size: 1.2em;
+  color: #f5c181;
+  margin-top: 3.3rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.pagination {
+  display: inline-block;
+  margin: auto;
+  font-size: 1.3em;
+}
+
+.current {
+  color: #f5c181;
+  padding-right: 0.5rem;
+  font-weight: bold;
+}
+
+.page, .next, .last, .first, .previous {
+  color: white;
+  padding-right: 0.5rem;
+}
+
+.btn-filter {
+  font-size: 0.9em;
+  background-color: white;
+  color: black;
+  /* border-radius: 8px; */
+  border:  1px solid rgba(0,0,0,.125);
+  padding: 0.5rem;
+}
+
+.active-filter {
+  font-size: 0.9em;
+  background-color: #ffeecf;
+  color: black;
+  /* border-radius: 8px; */
+  border: 1px solid rgba(0,0,0,.125);
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.btn-result-filter {
+  background-color: white;
+  color: black;
+  /* font-size: 1.1em; */
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.dropdown-item:active {
+  background-color: #ffeecf;
+}
+
+.noresult-page {
+  margin: 2rem 0;
+}
+
+.noresult-text {
+  color: white;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.ul-result-filter {
+  width: 14rem;
+  margin: auto;
+}
+
+.ajax-resultContainer {
+  margin-top: 2rem;
+}
+
+.notConvinced {
+  font-size: 1.1em;
+  text-align: center;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+/****************************************** PAGE PROPOSER UN TRAJET ******************************************/
+
+.add-ride__background {
+  background-image: url("../images/surf-car-390.png");
+  background-color: #f5c181; 
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: calc(100vh - 208px);
+}
+
+.add-ride-title {
+  margin-top: 6rem;
+}
+
+.car_add {
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.carAdd-border {
+  border: 1px dotted white;
+  padding: 1rem 1rem 0 1rem;
+  margin-bottom: 2rem;
+}
+
+.checkbox__agreement {
+  color: white;
+  text-align: justify;
+  padding: 0.25rem 0.5rem;
+}
+
+input[type=checkbox] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  border: 1px solid #CCC;
+  border-radius: 2px;
+  background-color: white;
+  display: inline-block;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+  color: black;
+  box-sizing: content-box;
+}
+
+input[type="checkbox"]:checked {
+  position: relative;
+  background-color: #FFF;
+  border-radius: 2px;
+  border: 1px solid #CCC;
+  color: black;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked:before {
+  content: '✓';
+  font-size: 1.5em;
+  color: black;
+  font-weight: bold;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 30%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+}
+
+input[type="checkbox"]:focus {
+  outline: 0 none;
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+/****************************************** PAGE MES TRAJETS EN COURS ******************************************/
+
+.current-ride__background {
+  background-image: url("../images/oldies-surf-450.png");
+  background-attachment: fixed;
+  background-color: #f5c181;
+  background-repeat: no-repeat;
+  background-position: 4% 21rem;
+  min-height: calc(100vh - 208px);
+}
+
+.my-ride__badge-number {
+  color: white;
+  background-color: #f5c181;
+  font-size: 1.1em;
+  font-weight: bold;
+  float: right;
+  border-radius: 50%;
+  padding: 0.3rem 0.5rem 0.2rem 0.5rem;
+  font-family: 'Arial';
+  margin-top: 0.3rem;
+}
+
+.blue-badge {
+  background-color: #00AEAD;
+}
+
+.card {
+  border-radius: 0;
+}
+
+.dropdown-menu {
+  padding: 0;
+  width: 100%;
+  height: 1rem;
+}
+
+.card-driver {
+  width: 12rem;
+  margin: 4rem 0 0 6rem;
+}
+
+.card-passenger {
+  width: 12rem;
+  margin: 3rem 0 0 6rem;
+}
+
+.my-ride__card-header {
+  background-color: #f5c181;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  height: 4rem;
+  padding-top: 1.2rem;
+}
+
+.active {
+  z-index: 2;
+  color: black;
+  background-color: #ffeecf;
+  border-color: lightgrey;
+  font-weight: bold;
+  padding: 1.2rem 1rem 1rem;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.list-group-item {
+  font-size: 1.1em;
+  padding: 1.2rem 1rem 1rem;
+  cursor: pointer;
+}
+
+.my-ride__background {
+  background-image: url("../images/surf-board-motifs-rose-400.jpg");
+  margin: 2rem auto 2rem auto;
+  padding: 0.5rem;
+  height: 165px;
+  width: 70%;
+}
+
+.passenger-ride {
+  height: 252px;;
+}
+
+.my-ride__ticket {
+  background-color: white;
+  height: 148px;
+}
+
+#showCreatedRides {
+  display: block;
+  margin-bottom: 5rem;
+}
+
+#createdride-col {
+  display: block;
+}
+
+#showFavouriteRides, #showAcceptedRides, #showPendingRides, #showRefusedRides {
+  display: none;
+  margin-bottom: 5rem;
+}
+
+#favouriteride-col, #acceptedride-col, #pendingride-col, #refusedride-col {
+  display: none;
+}
+
+.my-ride__h3 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.6em;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  color: white;
+}
+
+.my-ride__journey {
+  color: #00a79d;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+  padding: 1.3rem 0 0.5rem 0;
+}
+
+.my-ride__return {
+  width: 49%;
+  display: inline-block;
+  text-align: center;
+  margin-top: 0.8rem;
+  padding: 0.5rem 0;
+}
+
+.my-ride-return-left {
+  border-right: 1px dotted #f5c181;
+}
+
+.my-ride__return-title {
+  color: #f5c181;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+}
+
+
+
+.my-ride__ticket a {
+  display: block;
+}
+
+.my-ride__single-title {
+  color: #f5c181;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+  text-align: center;
+  margin: 1.5rem 0 0.5rem 0;
+}
+
+.my-ride__single-date {
+  text-align: center;
+}
+
+.my-ride__no-result {
+  font-size: 1.3em;
+  text-align: center;
+  color: white;
+  margin-top: 2rem;
+}
+
+.my-ride__no-result-image {
+  background-image: url("../images/van-colorful-200.png"); 
+  background-repeat: no-repeat;
+  background-position: top 15% left 50%;
+  height: 200px;
+  width: 100%;
+  display: inline-block; 
+  margin-left: auto; 
+  margin-right: auto;
+  min-height: calc(100vh - 500px);
+}
+
+.js-my-ride__no-result-image { 
+  height: 200px;
+  width: 100%;
+  display: inline-block; 
+  margin-left: auto; 
+  margin-right: auto;
+  min-height: calc(100vh - 500px);
+}
+
+.my-ride__dropdown-driver {
+  color: #f5c181;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.my-ride__dropdown-passenger {
+  color: #00a79d;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#js-show-noResult {
+  display: none;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 8.4rem;
+  right: 3rem;
+  display: none;
+}
+
+.alert-created-ride {
+  color: black;
+  background-color: #ffeecf;
+  border-color: #ffeecf;
+}
+
+.alert {
+  text-align: center;
+  display: inline-block;
+}
+
+.rides-total {
+  color: white;
+  border-radius: 50%;
+  border: 1px solid #f5c181;
+  background-color: #f5c181;
+  padding: 0.3rem 0.5rem;
+  font-family: arial;
+  font-weight: bold;
+  float: right;
+}
+
+/****************************************** PAGE PROFIL ******************************************/
+
+.profile {
+  background-color: #f5c181;
+  text-align: center;
+  min-height: calc(100vh - 208px);
+}
+
+.profile__name {
+  color: black;
+  font-family: 'Staatliches', cursive;
+  font-size: 2em;
+  text-align: center;
+  margin: 1rem 0 0 0;
+}
+
+.rounded-circle {
+  border: 1px solid white;
+  margin: 5rem 0 4rem 0;
+  height: 300px;
+  width: 300px;
+}
+
+.card-profile {
+  margin: 4rem 0 0 auto;
+}
+
+.orange-card-header {
+  background-color:  #f5c181;
+}
+
+#showProfileInfo {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+#showProfilePicture, #showProfileCar, #showProfileCarAdd {
+  display: none;
+}
+
+#profile-info-col {
+  display: block;
+}
+
+#profile-picture-col, #profile-car-col, #profile-car-add-col {
+  display: none;
+}
+
+.profile-h3 {
+  color: white;
+  margin: 4rem auto 3rem auto;
+}
+
+.profile__info-form {
+  margin-top: 1rem;
+}
+
+.profile-picture-circle {
+  height: 250px;
+  width: 250px;
+  display: block;
+  margin: 4rem auto 3rem auto;
+  border: 4px solid white;
+}
+
+.dropdown-divider {
+  border-top: 1px solid #ffeecf;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.carAdd__form, .car__form {
+  margin-top: 6rem;
+}
+
+.profile__text-car {
+  color: white;
+  font-size: 1.3em;
+  text-align: right;
+  width: 50%;
+  display: inline-block;
+}
+
+.my-car__no-result {
+  font-weight: bold;
+  font-size: 1.3em;
+  text-align: center;
+  color: white;
+  margin-top: 6rem;
+}
+
+.car__no-result-image {
+  background-position: top 15% left 50%;
+}
+
+.btn-delete-profile {
+  margin: 1rem 0 2rem 0;
+  background-color: #e89f71;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.8em;
+  display: inline-block;
+}
+
+.btn-ride-edit {
+  margin: 1rem 0 2rem 0;
+  background-color: #bac7a7;;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.8em;
+  display: inline-block;
+}
+
+.btn-chat {
+  color: white;
+  background-color: #00a79d;
+  font-weight: bold;
+  margin: 3rem 2rem 2rem 2rem;
+}
+
+.btn-little-margin {
+  margin: 3.6rem auto 0 auto;
+  display: block;
+}
+
+/****************************************** SUMMARY RIDE ******************************************/
+
+.summaryRide__left {
+  background-color: #007065; 
+  /* min-height: calc(100vh - 208px);  */
+}
+
+.summaryRide__right {
+  background-color: #f5c181; 
+  min-height: calc(100vh - 208px); 
+}
+
+.summaryRide__title {
+  font-size: 3em;
+  color: #00a79d;
+}
+
+.summaryRide__driver-picture {
+  margin: 0 0 2rem 0;
+  height: 4rem;
+  width: 4rem;
+}
+
+.summaryRide__passenger-picture {
+  margin: 0 0 0.5rem 0;
+  height: 3rem;
+  width: 3rem;
+}
+
+.summaryRide__passenger-type {
+  font-family: 'Raleway', sans-serif;
+  color: #838383;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.fa-comment {
+  padding-left: 0.5rem;
+}
+
+.summaryRide__passenger-text {
+  margin: 0 1rem 2rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.you-are-the-driver {
+  color: #ffeecf;
+  font-family: 'Staatliches', cursive;
+  font-size: 2em;
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+.summaryRide__status-border {
+  border: 3px dotted #ffeecf;
+  width: 70%;
+  margin: auto;
+}
+
+.pending-passenger {
+  margin: 2rem 0 1rem 0;
+}
+
+.summaryRide__left-title {
+  margin: 3rem 0;
+  color: #00a79d;
+  font-family: 'Staatliches', cursive;
+  font-size: 2.5em;
+}
+
+.summaryRide__square {
+  color: white;
+  margin: 1rem 0 3rem 0;
+  font-weight: bold;
+}
+
+.summaryRide-fa-water:before {
+  content: "\f773";
+  color: #f5c181;
+  font-size: 1.5em;
+}
+
+.small-fa-water:before {
+  content: "\f773";
+  color: #f5c181;
+  font-size: 0.8em;
+}
+
+.no-passenger {
+  font-size: 1em;
+}
+
+.summaryRide__destination {
+  background-color: #00a79d;
+  padding: 5rem 0;
+  color: white;
+  font-family: 'Staatliches', cursive;
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.summaryRide__details {
+  padding: 2rem 0 4rem 0;
+  color: #ffeecf;
+  font-family: 'Staatliches', cursive;
+  font-size: 2em;
+  text-align: center;
+  font-weight: normal;
+}
+
+.summaryRide__details-bold {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.summaryRide__details-regular {
+  font-weight: normal;
+  padding-bottom: 1.5rem;
+}
+
+.summaryRide-text-price {
+  margin-top: 2rem;
+  color: #00a79d;
+  font-family: 'Staatliches', cursive;
+  font-size: 2em;
+  font-weight: normal;
+}
+
+.summaryRide__price-container {
+  width: 100%;
+}
+
+.fa-heart:before {
+  content: "\f004";
+  font-size: 3em;
+  color:#ffeecf;
+}
+
+.summaryRide__favourite {
+  margin: 0;
+  position: absolute;
+  right: 1.5rem;
+  top: 1rem;
+}
+
+.you-are-not-the-driver {
+  color: black;
+  font-family: 'Staatliches', cursive;
+  font-size: 2em;
+  text-align: center;
+  margin: 1rem 0 2rem 0;
+  display: block;
+}
+
+.btn-white {
+  background-color: white;
+  font-weight: bold;
+  color: #00a79d;
+  margin: 3rem 2rem 0 2rem;
+}
+
+.btn-white-white {
+  background-color: #f5c181;
+  font-weight: bold;
+  color: white;
+  border: 1px solid white;
+  margin-top: 1rem;
+}
+
+.btn-cancel-ride {
+  background-color: #e89f71;
+  font-weight: bold;
+  color: white;
+  margin: 3rem 2rem 0 2rem;
+}
+
+.fa-shopping-basket:before {
+  content: "\f291";
+  padding-left: 0.5rem;
+}
+
+.summaryRide__notDriver-picture {
+  margin: 0 0 1rem 0;
+  height: 6rem;
+  width: 6rem;
+}
+
+.summaryRide-checkProfile {
+  display: block;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  color: #ffeecf;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.summaryRide-check-driver {
+  border: 3px dotted #ffeecf;
+  padding: 1rem 2rem;
+}
+
+.summaryRide_margin-title {
+  margin-top: 5rem;
+}
+
+.fa-thumbs-down:before, .fa-thumbs-up:before {
+  padding-left: 0.5rem;
+}
+
+.modal-header {
+  background-color: #f5c181;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.3em;
+  padding-top: 1.3rem;
+}
+
+.modal-body {
+  background-color: #00a79d;
+  padding: 0;
+}
+
+.modal-picture {
+  width: 10rem;
+  height: 10rem;
+  margin: 1rem;
+}
+
+.modal__profil-info {
+  color: white;
+  line-height: 2rem;
+  font-size: 1.2em;
+  margin-bottom: 2rem;
+}
+
+.modal__comments {
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.modal__comments-title {
+  color: white;
+  font-family: 'Staatliches', cursive;
+  font-size: 2.5em;
+  margin-bottom: 2rem;
+}
+
+.modal-header-chat {
+  background-color: #007065;
+  color: white;
+  font-size: 1.2em;
+}
+
+.modal-body-chat {
+  background-color: #ffeecf;
+}
+
+.modal__chat-firstname {
+  width: 100%;
+  font-weight: bold;
+  float: left;
+  padding-bottom: 0.5rem;
+}
+
+.modal__chat-date {
+  width: 100%;
+  float: left;
+  display: block;
+  padding-bottom: 0.5rem;
+  color: darkgrey
+}
+
+.modal__chat-message {
+  float: left;
+  width: 100%;
+}
+
+.author-message {
+  float: right;
+  text-align: right;
+  background-color: #e5e4cc;
+  display: inline-block;
+  margin: 1rem 1rem 0 1rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  width: 49%;
+}
+} 
+
+.modal__chat-picture-author {
+  width: 9%;
+  height: 9%;
+  margin: 1rem 0;
+  float: right;
+}
+
+.reader-message {
+  float: left;
+  text-align: left;
+  background-color: white;
+  display: inline-block;
+  margin: 1rem 1rem 0 1rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  width: 49%;
+}
+}
+
+.modal__chat-picture-reader {
+  width: 9%;
+  height: 9%;
+  margin: 1rem 0;
+  float: left;
+}
+
+.modal__chat-new-message {
+  margin: 2rem 0 0 0;
+  width: 100%;
+}
+
+.modal__chat-textarea {
+  height: 5rem;
+  border: 3px dotted #f5c181;
+  margin-top: 2rem;
+  width: 71%;
+}
+
+.modal__seat-number-confirm {
+  background-color: #f5c181;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+.modal__seat-number-label {
+  display: block;
+}
+
+.modal__seat-number-select {
+  height: 2.3rem;
+  margin: 1rem 0.5rem 0 0;
+  background-color: #f5c181;
+  color: white;
+  font-weight: bold;
+  border: 1px solid white;
+  border-radius: 0.25rem;
+  font-size: 1.2em;
+  padding-left: 0.25rem;
+}
+
+.btn-driver-response {
+  font-size: 1em;
+}
+
+.modal__cancelRide-textarea {
+  height: 5rem;
+  width: 20rem;
+  border: none;
+  display: block;
+  border-radius: 0.25rem;
+  margin: 0 auto 1rem;
+}
+
+.form-chat-new-message {
+  width: 100%;
+}
+
+.summaryRide__pending-numberOfPlace {
+  color:#838383;
+  font-weight: bold;
+}
+
+.summaryRide__pending-enquiry {
+  background-color: #ffeecf;
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+
+.summaryRide__cancel-modal {
+  margin-bottom: 3rem;
+}
+
+.modal-cancel-ride {
+  background-color: #f5c181;
+  border: none;
+  padding: 0;
+}
+
+/****************************************** REVIEW ******************************************/
+
+.review__background {
+  background-image: url("../images/review-400.png");
+  background-color: #00a79d;
+  background-position: left 45% top 40%;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 208px);
+}
+
+.allReviews-image-left {
+  margin: auto;
+  display: block;
+}
+
+.allReviews-background {
+  background-color: #007065;
+}
+
+.addReview__title {
+  color: white;
+  margin: 3rem 0 5rem 0;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.addReview__precision {
+  font-style: italic;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.allReviews-text {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem 3rem;
+}
+
+.allReviews-date {
+  color: white;
+  font-style: italic;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.margin-modal-review-summary {
+  margin-bottom: 2rem;
+}
+
+.fa-quote-left {
+  font-size: 3em;
+  margin-top: 3rem;
+  color: #00a79d;
+}
+
+.fa-quote-right {
+  font-size: 3em;
+  float: right;
+  color: #00a79d;
+}
+
+.allReviews__right {
+  margin-bottom: 6rem;
+}
+
+.modal-summary-fa-quote-left:before {
+  content: "\f10d";
+  color: #f5c181;
+  margin-top: 1rem;
+}
+
+.modal-summary-fa-quote-right:before {
+  content: "\f10e";
+  color: #f5c181;
+}
+
+.see-more-reviews>a:hover{
+  margin-top: 2rem;
+  color: #f5c181;
+}
+
+/******************************************************** ERROR PAGES ***********************************************************/
+
+.container-404 {
+  background-image: url("../images/404-450.png");
+  background-color: #007065; 
+  background-repeat: no-repeat;
+  background-position: right 52% top 50%;
+  min-height: calc(100vh - 208px);
+}
+
+.container-500 {
+  background-image: url("../images/500-450.png");
+  background-color: #007065; 
+  background-repeat: no-repeat;
+  background-position: right 50% top 50%;
+  min-height: calc(100vh - 208px);
+}
+.container-403 {
+  background-image: url("../images/403-450.png");
+  background-color: #007065; 
+  background-repeat: no-repeat;
+  background-position: right 50% top 50%;
+  min-height: calc(100vh - 208px);
+}
+
+
+/****************************************** STYLES GENERIQUES ******************************************/
+
+.bold {
+  font-weight: bold;
+}
+
+.lightgreen {
+  background-color: #00a79d;
+}
+
+.darkgreen {
+  background-color: #007065;
+}
+
+.orange {
+  background-color: #f5c181;
+}
+
+.orange-color {
+  color: #f5c181;
+}
+
+.white-text {
+  color: white;
+}
+
+.orange-text {
+  color: #f5c181;
+}
+
+.sand-text {
+  color: #ffeecf;
+}
+
+
+li {
+  list-style: none;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+/* HOVER */
+
+a:hover {
+  color: #00a79d;
+  text-decoration: none;
+}
+
+.header__name a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.home__buttons a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.white-detail a:hover{
+  color: #FEF8D8;
+}
+
+.signin__explaination a:hover {
+  color: #f5c181;
+}
+
+.result__detail a:hover {
+  color: black;
+  font-weight: bold;
+}
+
+.page a:hover, .next a:hover, .last a:hover, .first a:hover, .previous a:hover {
+  color: white;
+}
+
+#btn-border-filter:hover {
+  border: 1px solid #f5c181;
+  color: #00a79d;
+}
+
+.car_add a:hover {
+  color: #ffeecf;
+}
+
+.my-ride__ticket p:hover {
+  color: black;
+}
+
+.form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
+  border-color: #dc3545;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #f5c181;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(245,193,129,.25);
+}
+
+.custom-file-input:focus {
+  border-color: #f5c181;
+}
+
+#btn-border-filter:focus {
+  border-color: #f5c181;
+}
+
+.btn-result-filter:focus {
+  outline: 0;
+  box-shadow: none;
+  border-color: #f5c181;
+}
+
+.btn-orange:focus {
+  border: none;
+}
+
+.btn:focus, textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-edit-search {
+  margin: 0.8rem;
+}
+
+.btn-get-notified {
+  margin: 0.8rem;
+}
+
+.margin-btn-send-chat {
+  margin: 1.1rem 1rem 3rem 0;
+}
+/****************************************** MEDIA QUERIES ******************************************/
+
+/***************** EXTRA SMALL DEVICES ONLY *****************/
+
+@media (max-width: 575.98px) {
+
+  /* .btn-orange {
+    margin: 0 0 3rem 0;
+  } */
+
+  /* HEADER ET NAVBAR */
+
+  .header {
+    margin: 1.5rem 0 1.5rem 0.5rem;
+  }
+
+  .header__name {
+    font-size: 2.4em;
+    margin: 0 1rem;
+  }
+
+  .header__description {
+    font-size: 1.1em;
+    margin: 0 1rem;
+  }
+
+  .navbar {
+    padding: 1.54rem 0 0 0;
+  }
+
+  .header__menu {
+    margin-top: 0;
+  }
+
+  .collapse__item {
+    font-size: 1.2em;
+    padding: 1.2rem 0;
+  }
+
+  /* FOOTER */
+
+  .footer__detail {
+    margin: 1rem auto;
+  }
+
+  /* HOME */
+
+  .home__left, .home-connected__left {
+    background-image: url("../images/home-surf-van-230.jpg");
+    height: 250px;
+  }
+
+  .home__right {
+    height: auto;
+  }
+
+  .home__buttons {
+    font-size: 1.5em;
+    padding: 1rem 0;
+  }
+  
+  .home__rides {
+    font-size: 1.5em;
+  }
+
+  /* RECHERCHER UN TRAJET */
+
+  .search__background, .result__background {
+    background-image: url("../images/orange-board-250.jpg");
+    min-height: auto;
+    background-position: right 50% bottom 20%;
+  }
+
+  .form__title {
+    margin: 2rem 0 15rem 0;
+    font-size: 2.3em;
+  }
+
+  .form-left {
+    margin: 3rem 1rem 0 1rem;
+  }
+
+  .form-right {
+    margin: 0 1rem;
+  }
+
+  .ride__form {
+    padding: 0;
+  }
+
+  /* PROPOSER UN TRAJET */
+
+  .add-ride__background {
+    background-image: url("../images/surf-car-300.png");
+    min-height: auto;
+    background-position: center 75%;
+  }
+
+  .add-ride-title {
+    margin: 2rem 0 14rem 0;
+  }
+
+  .btn-grey {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  /* MES TRAJETS */
+
+  .my-ride__background {
+    width: 80%;
+  }
+
+  .my-ride__no-result-image {
+    background-image: url("../images/van-colorful-130.png"); 
+    background-position: top 25% left 50%;
+    height: 130px;
+    margin-top: 2rem;
+  }
+
+  .my-ride__no-result {
+    font-size: 1.3em;
+    margin-top: 3rem;
+  }
+
+  .btn-myride-menu {
+    background-color: white;
+    margin: 3rem auto 1rem auto;
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .back-to-top {
+    bottom: 9rem;
+    right: 0rem;
+  }
+
+  /* PROFIL */
+  .my-ride__no-result-image {
+    margin-bottom: 3rem;
+    min-height: auto;
+  }
+
+  .profile__text-car {
+    color: white;
+    font-size: 1.3em;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+  }
+
+  .btn-red {
+    margin: 1rem auto;
+    display: block;
+  }
+
+  .car__result-image {
+    background-image: url("../images/van-colorful-130.png");
+    height: 130px;
+    min-height: calc(100vh - 600px);
+  }
+
+  /* SUMMARY RIDE */
+
+  .rounded-circle {
+    border: 1px solid white;
+    margin: 1rem 0;
+    height: 153px;
+    width: 153px;
+  }
+
+  .summaryRide__driver-picture {
+    margin: 0 0 2rem 0;
+    height: 3rem;
+    width: 3rem;
+  }
+  
+  .summaryRide__passenger-picture {
+    margin: 0 0 0.5rem 0;
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .fa-heart:before {
+    font-size: 2em;
+  }
+
+  .summaryRide-check-driver {
+    border: 3px dotted #ffeecf;
+    padding: 1rem 0.5rem;
+  }
+
+  .modal__cancelRide-textarea {
+    height: 8rem;
+    width: 16rem;
+  }
+
+  /* REVIEWS */
+
+  .addReview__precision {
+    font-size: 0.9em;
+  }
+
+  .review__background {
+    background-image: url("../images/review-300.png");
+    background-position: left 45% bottom 5%;
+    min-height: 292px;
+  }
+
+  .allReviews-text {
+    margin: 1rem 0.5rem;
+  }
+
+  /* ERROR PAGES */
+
+  .container-404 {
+    background-image: url("../images/404-250.png");
+    background-position: right 50% top 50%;
+    min-height: calc(100vh - 268px);
+  }
+
+  .container-500 {
+    background-image: url("../images/500-250.png");
+    background-position: right 50% top 50%;
+    min-height: calc(100vh - 268px);
+  }
+
+  .container-403 {
+    background-image: url("../images/403-250.png");
+    background-position: right 50% top 50%;
+    min-height: calc(100vh - 268px);
+  }
+
+}
+
+/***************** EXTRA SMALL AND SMALL DEVICES ONLY *****************/
+
+@media (max-width: 767.98px) {
+
+  /* HOME */
+  .home__site-explanations {
+    padding: 0 0 3rem 0;
+    font-size: 1em;
+  }
+
+  /* PROFIL */
+
+  .profile {
+    min-height: auto;
+  }
+  
+  .profile__title {
+    margin: 1rem 0 1rem 0;
+    font-size: 2.8em;
+  }
+
+  .profile__name {
+    font-size: 1.7em;
+  }
+
+  /* SIGN IN */
+
+  .signin-form {
+    margin: 3rem 0 0 0;
+  }
+
+  .white__title {
+    font-size: 2em;
+    text-align: center;
+    margin: 2.5rem 0 1rem 0;
+  }
+
+  .signin-picture {
+    height: 10rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  /* MES TRAJETS*/
+
+  .current-ride__background {
+    background-image: url("../images/oldies-surf-200.png");
+    background-position: left 47% top 7rem;
+    min-height: 18.2rem;
+    background-attachment: unset;
+  }
+
+  .my-ride__h3 {
+    margin: 2rem auto;
+  }
+
+  /* PROFIL */
+
+  .carAdd__form, .car__form {
+    margin-top: 2rem;
+  }
+
+  .profile-picture-circle {
+    margin: 3rem auto;
+    border: 4px solid white;
+  }
+
+  /* SUMMARY RIDE */
+  .summaryRide__destination {
+    padding: 3rem 0;
+  }
+
+  .summaryRide__status-border {
+    width: 90%;
+  }
+
+  .summaryRide-check-driver {
+    margin-top: 2rem;
+  }
+
+  .summaryRide__favourite {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    margin: 0rem;
+  }
+
+  .summaryRide__notDriver-picture {
+    height: 5em;
+    width: 5rem;
+  }
+
+  .summaryRide_margin-title {
+    margin-top: 3rem;
+  }
+
+  /* REVIEWS */
+
+  .addReview__title {
+    font-size: 1.3em;
+    margin: 3rem 0;
+  }
+
+}
+
+/***************** SMALL DEVICES ONLY *****************/
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+  /* HOME */
+  .home-connected__left {
+    background-image: url("../images/home-surf-van-280.jpg");
+    height: 300px;
+  }
+
+  /* RECHERCHER UN TRAJET */
+
+  .search__background, .result__background {
+    background-image: url("../images/orange-board-300.jpg");
+    min-height: auto;
+  }
+
+  .form__title {
+    margin: 2rem 0 19rem 0;
+    font-size: 2.5em;
+  }
+
+  .form-left {
+    margin: 3rem 3rem 0 3rem;
+  }
+
+  .form-right {
+    margin: 0 3rem 2rem 3rem;
+  }
+
+  .ride__form {
+    padding: 0;
+  }
+
+  /* RESULTATS DE LA RECHERCHE */
+
+  .result__background {
+    background-image: url("../images/orange-board-300.jpg");
+    min-height: auto;
+    background-position: right 50% top 50%;
+  }  
+
+  /* PROPOSER UN TRAJET */
+
+  .add-ride__background {
+    background-image: url("../images/surf-car-300.png");
+    min-height: auto;
+    background-position: center 70%;
+  }
+
+  .add-ride-title {
+    margin: 3rem 0 17rem 0;
+  }
+
+  .btn-grey {
+    float: right;
+  }
+
+  /* PROFIL*/
+  .my-ride__no-result-image {
+    margin-top: 0;
+    min-height: calc(100vh - 650px);
+  }
+
+  .car__result-image {
+    background-image: url('../images/van-colorful-130.png');
+    height: 130px;
+    min-height: calc(100vh - 650px);
+  }
+
+  /* MES TRAJETS */
+  .btn-myride-menu {
+    background-color: white;
+    margin: 3rem auto 1rem auto;
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  /* SUMMARY RIDE */
+
+  .rounded-circle {
+    border: 1px solid white;
+    margin: 1rem 0;
+    height: 153px;
+    width: 153px;
+  }
+
+  .summaryRide__driver-picture {
+    margin: 0 0 2rem 0;
+    height: 4rem;
+    width: 4rem;
+  }
+  
+  .summaryRide__passenger-picture {
+    margin: 0 0 0.5rem 0;
+    height: 3rem;
+    width: 3rem;
+  }
+
+   /* REVIEWS */
+
+   .review__background {
+    background-image: url("../images/review-350.png");
+    background-position: left 45% bottom 20%;
+    min-height: 348px;
+  }
+
+}
+
+/***************** MEDIUM DEVICES ONLY *****************/
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+  /* HOME */
+
+  .home__left {
+    background-image: url("../images/home-surf-van-350.jpg");
+  }
+
+  .home__buttons, .home__rides {
+    font-size: 1.8em;
+  }
+  
+
+  /* HOME UTILISATEURS CONNECTES */
+  .home-connected__left {
+    background-image: url("../images/home-surf-van-350.jpg");
+    height: 400px;
+  }
+
+  /* PROPOSER UN TRAJET */
+
+  .btn-grey {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  /* RESULTATS DE LA RECHERCHE */
+
+  .result__background {
+    background-image: url("../images/orange-board-400.jpg");
+    min-height: auto;
+    background-position: right 50% top 50%;
+  }
+
+  /* MES TRAJETS */
+
+    .btn-myride-menu {
+      background-color: white;
+      margin: 3rem auto;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    .my-ride__background {
+      width: 60%;
+    }
+
+    .my-ride__h3 {
+      margin: 0 auto 2rem auto;
+    }
+
+    .back-to-top {
+      right: 4rem;
+    }
+
+  /* PROFIL */
+
+  .carAdd__form {
+    margin-top: 3rem;
+  } 
+  
+  .car__form {
+    margin-top: 2rem;
+  }
+
+  .car__result-image {
+    background-image: url('../images/van-colorful-130.png');
+    height: 130px;
+    min-height: calc(100vh - 650px);
+  }
+
+}
+
+/***************** MEDIUM AND LARGE DEVICES ONLY *****************/
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+
+  /* SIGN IN */
+    .signin-picture {
+      height: 10rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    .white__title {
+      margin: 3rem 0 1rem 0;
+    }
+
+  /* RECHERCHER UN TRAJET */
+
+  .search__background {
+    background-image: url("../images/orange-board-300.jpg");
+    min-height: auto;
+  }
+
+  .form__title {
+    margin: 2rem 0 21rem 0;
+    font-size: 2.8em;
+  }
+
+  .ride__form {
+    padding: 3rem 2rem;
+  }  
+
+  /* RESULTATS RECHERCHE */
+  .summaryRide__notDriver-picture {
+    height: 5em;
+    width: 5rem;
+  }
+  
+  /* PROPOSER UN TRAJET */
+
+  .add-ride__background {
+    background-image: url("../images/surf-car-300.png");
+    min-height: auto;
+    background-position: center 70%;
+  }
+
+  .add-ride-title {
+    margin: 3rem 0 16rem 0;
+  }
+
+  /* PROFIL */
+
+  .profile {
+    min-height: auto;
+  }
+  
+  .profile__title {
+    margin: 2rem 0 1rem 0;
+  }
+
+  .rounded-circle {
+    height: 153px;
+    width: 153px;
+    margin: 2rem auto;
+  }
+
+  /* MES TRAJETS */
+
+  .current-ride__background {
+    background-image: url("../images/oldies-surf-250.png");
+    background-position: left 47% top 7rem;
+    min-height: auto;
+    background-attachment: unset;
+  }
+
+  .my-ride__title {
+    margin: 2rem 0 17rem 0;
+  }
+
+  .card-driver {
+    margin: 3rem 0 3rem 7rem;
+  }
+
+  .card-passenger {
+    margin: 1rem 0 3rem 7rem;
+  }
+
+  .profile-picture-circle {
+    margin: 3rem auto;
+  }
+
+  .profile__picture-form {
+    margin-bottom: 4rem;
+  }
+
+    /* SUMMARY RIDE */
+    .summaryRide__destination {
+      padding: 3rem 0;
+    }
+
+    .summaryRide__driver-picture {
+      margin: 0 0 2rem 0;
+      height: 4rem;
+      width: 4rem;
+    }
+    
+    .summaryRide__passenger-picture {
+      margin: 0 0 0.5rem 0;
+      height: 3rem;
+      width: 3rem;
+    }
+
+    .summaryRide__favourite {
+      position: absolute;
+      top: 0;
+      right: 1rem;
+      margin: 1rem;
+    }
+
+    .summaryRide-check-driver {
+      margin-top: 2rem;
+    }
+
+    .summaryRide_margin-title {
+      margin-top: 3rem;
+    }
+    
+    /* REVIEWS */
+
+    .review__background {
+      background-image: url("../images/review-350.png");
+      background-position: left 45% bottom 20%;
+      min-height: 348px;
+    }
+
+    .addReview__title {
+      margin: 3rem 0;
+    }
+
+}
+
+/***************** LARGE DEVICES ONLY *****************/
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+  /* HOME UTILISATEURS CONNECTES */
+  .home-connected__left {
+    background-image: url("../images/home-surf-van-420.jpg");
+  }
+
+   /* PROPOSER UN TRAJET */
+
+   .btn-grey {
+    float: right;
+  }
+
+    /* PROFIL */
+
+    .carAdd__form, .car__form {
+      margin-top: 5rem;
+    }
+
+    .car__result-image {
+      background-image: url('../images/van-colorful-130.png');
+      height: 130px;
+      min-height: calc(100vh - 580px);
+    }
+
+    /* MES TRAJETS */
+    .back-to-top {
+      right: 1rem;
+    }
+
+
+}
+
+/***************** PAGE RESULTATS ET MES TRAJETS ONLY *****************/
+
+  @media (max-width: 379.98px) {
+    .result__detail {
+      width: 16.5rem;
+    }
+  }
+  
+  @media (min-width: 379.99px) and (max-width: 483.98px) {
+    .result__detail {
+      width: 19.06rem;
+    }
+  }
+
+  @media (max-width: 483.99px) {
+
+    .result__title {
+      font-size: 1.1em;
+      margin: 2rem 0 2rem 0;
+    }
+
+    .result__detail-date-title {
+      margin-top: 0.5rem;
+    }
+    
+    .result__detail-date-single, .result__detail-date-return {
+      width: 45%;
+      padding-bottom: 0.5rem;
+    }
+
+    .result__detail-date-return {
+    border-left: 1px dotted #f5c181;
+    }
+
+    .result__detail-info-return {
+      border-left: none;
+      width: 100%;
+      border-top: 1px dotted #f5c181;
+      padding: 0.5rem 0;
+    }
+
+    .result__detail-driver-info {
+      width: 40%;
+      margin-left: 1rem;
+    }
+
+    .result__detail-driver-level {
+      display: block;
+    }
+
+    .return-border-top {
+      border-top: 1px dotted #f5c181;
+    }
+
+    /* ALLER SIMPLE */
+
+    .date-return {
+      margin-top: 1rem;
+    }
+
+    .result__detail-date {
+      width: 100%;
+      border-bottom: 1px dotted #f5c181;
+      padding-bottom: 0.5rem;
+    }
+
+    .result__detail-info {
+      width: 100%;
+    }
+
+  }
+
+  @media (max-width: 991.99px) {
+    .active {
+      font-size: 1em;
+      padding: 0.5rem 1rem 1rem;
+      
+    }
+    .list-group-item {
+      font-size: 1em;
+      padding: 0.5rem 1rem 1rem;
+  }
+  }
+
+  @media (min-width: 553.99px) and (max-width: 624.98px) {
+
+    .result__detail {
+      width: 28.56rem;
+    }
+
+  }
+
+  @media (min-width: 624.99px) and (max-width: 729.98px) {
+
+    .result__detail {
+      width: 29.68rem;
+    }
+
+  }
+
+  @media (min-width: 729.99px) and (max-width: 849.98px) {
+
+    .result__detail {
+      width: 31.31rem;
+    }
+
+  }
+
+  @media (min-width: 849.99px) and (max-width: 991.98px) {
+
+    .result__detail {
+      width: 31.5rem;
+    }
+
+  }
+
+  @media (min-width: 991.99px) and (max-width: 1139.98px) {
+
+    .result__detail {
+      width: 30.62rem;
+    }
+
+  }
+
+  @media (min-width: 1139.99px) and (max-width: 1324.98px) {
+
+    .result__detail {
+      width: 28rem;
+    }
+
+  }
+
+  @media (min-width: 1324.99px) and (max-width: 1599.98px) {
+
+    .result__detail {
+      width: 30rem;
+    }
+
+  }
+
+  @media (min-width: 1599.99px) {
+
+    .result__detail {
+      width: 29.25rem;
+    }
+
+  }
+
+  /* MES TRAJETS */
+
+  @media (min-width: 1199.99px) and (max-width: 1399.98px) {
+
+    .current-ride__background {
+      background-image: url("../images/oldies-surf-300.png");
+      background-position: left 6% top 21rem;
+    }
+  }
+
+  @media (min-width: 1399.99px) and (max-width: 1599.99px) {
+
+    .current-ride__background {
+      background-image: url("../images/oldies-surf-400.png");
+      background-position: left 4% top 21rem;
+    }
+  }
+
+  @media (min-width: 1199.99px) and (max-width: 1499.98px) {
+
+    .card-driver {
+      width: 10.5rem;
+      margin: 4rem 0 0 30%;
+    }
+
+    .card-passenger {
+      width: 10.5rem;
+      margin: 3rem 0 0 30%;
+    }
+
+    .my-ride__card-header {
+      font-size: 1.3em;
+      height: 3rem;
+      padding-top: 0.9rem;
+    }
+
+    .active {
+      font-size: 1em;
+    } 
+
+    .list-group-item {
+      font-size: 1em;
+    }
+
+    .my-ride__h3 {
+      text-align: none;
+      padding-left: 8%;
+    }
+
+    #ajax-rideContainer {
+      padding-left: 2.5rem;
+    }
+
+    .back-to-top {
+      right: 0.7rem;
+    }
+
+  }
+
+  @media (min-width: 1499.99px) and (max-width: 1599.99px) {
+
+    .card-driver {
+      margin: 4rem 0 0 25%;
+    }
+
+    .card-passenger {
+      margin: 3rem 0 0 25%;
+    }
+
+    .back-to-top {
+      right: 1.5rem;
+    }
+
+  }
+
+  /* PROPOSER UN TRAJET */
+
+  @media (min-width: 1199.99px) {
+
+    .btn-grey {
+      margin-top: 0;
+      margin-bottom: 2rem;
+    }
+  }

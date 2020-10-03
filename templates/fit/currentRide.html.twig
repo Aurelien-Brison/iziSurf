@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes trajets{% endblock %}
+
+{% block body %}
+
+<div class="main lightgreen">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="current-ride__background col-xl-4">
+                <h1 class="my-ride__title">Mes trajets</h1>
+            </div>
+            {# Menu 2 colonnes #}
+            <div class="col-lg-4 col-xl-2 d-none d-lg-block">
+                <div class="card card-driver">
+                    <div class="card-header my-ride__card-header">Conducteur</div>
+                    <ul class="list-group list-group-flush">
+                        <li class="created-rides active js-other-rides" data-id={{ app.user.slug }}>Trajets créés <span class="rides-total">{{ createdRides|length }}</span></li>
+                        <li class="archived-rides list-group-item js-other-rides" data-id={{ app.user.slug }}>Trajets archivés <span class="rides-total">{{ archivedRides|length }}</span></li>
+                </div>
+                <div class="card card-passenger">
+                    <div class="card-header my-ride__card-header">Passager</div>
+                        <li class="favourite-rides list-group-item js-other-rides" data-id={{ app.user.slug }}>Trajets favoris <span class="rides-total">{{ favouriteRides|length }}</span></li>
+                        <li class="accepted-rides list-group-item js-other-rides" data-id={{ app.user.slug }}>Demandes acceptées <span class="rides-total">{{ acceptedRides|length }}</span></li>
+                        <li class="pending-rides list-group-item js-other-rides" data-id={{ app.user.slug }}>Demandes en attente <span class="rides-total">{{ pendingRides|length }}</span></li>    
+                    </ul>
+                </div>
+            </div>
+            {# Menu 1 colonne #}
+            <div class="dropdown d-lg-none">
+                <a class="btn btn-myride-menu dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Trajets que tu veux afficher
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <ul>
+                        <li class="created-rides active js-other-rides" data-id={{ app.user.slug }}>
+                            <p class="my-ride__dropdown-driver">Conducteur</p>
+                            <p>Trajets à venir <span class="rides-total">{{ createdRides|length }}</span></p>
+                        </li>
+                         <li class="archived-rides list-group-item js-other-rides" data-id={{ app.user.slug }}>
+                            <p class="my-ride__dropdown-driver">Conducteur</p>
+                            <p>Trajets archivés <span class="rides-total">{{ archivedRides|length }}</span></p>
+                        </li>
+                        <li class="favourite-rides list-group-item js-other-rides" data-id={{ app.user.slug }}>
+                            <p class="my-ride__dropdown-passenger">Passager</p>
+                            <p>Trajets favoris <span class="rides-total">{{ favouriteRides|length }}</span></p>
+                        </li>
+                        <li class="accepted-rides list-group-item js-other-rides" data-id={{ app.user.slug }}>
+                            <p class="my-ride__dropdown-passenger">Passager</p>
+                            <p>Demandes acceptées <span class="rides-total">{{ acceptedRides|length }}</span></p>
+                        </li>
+                        <li class="pending-rides list-group-item js-other-rides" data-id={{ app.user.slug }}>
+                            <p class="my-ride__dropdown-passenger">Passager</p>
+                            <p>Demandes en attente <span class="rides-total">{{ pendingRides|length }}</span></p>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+
+            {# Titre et flash messages Trajets créés #}
+            <div class="col-lg-8 col-xl-6">
+                <h3 id="js-myride-h3" class="my-ride__h3">Trajets créés</h3>
+                <div class="row justify-content-center">
+                    {% for message in app.flashes('rideAddSuccess') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                     {% endfor %}
+                </div>
+                {# Contenu rides #}
+                {% include 'fit/_ajax-rides.html.twig' %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment-with-locales.min.js"></script>
+<script type="text/javascript" src={{ asset('assets/js/currentride.js') }}></script>
+
+{% endblock %}

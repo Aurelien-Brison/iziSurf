@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1>Tableau des utlisateurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Voiture</th>
+                <th>Prénom</th>
+                <th>spot</th>
+                <th>cityDeparture</th>
+                <th>placeDeparture</th>
+                <th>departureDate</th>
+                <th>departureHour</th>
+                <th>returnDate</th>
+                <th>returnHour</th>
+                <th>availableSeat</th>
+                <th>price</th>
+                <th>createdAt</th>
+                <th>updatedAt</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ride in rides %}
+            <tr>
+                {# {{dump(ride)}} #}
+                <td>{{ ride.id }}</td>
+                <td>{{ ride.car }}</td>
+                <td>{{ ride.driver.firstname }}</td>
+                <td>{{ ride.spot }}</td>
+                <td>{{ ride.cityDeparture }}</td>
+                <td>{{ ride.placeDeparture }}</td>
+                <td>{{ ride.departureDate|date('d-m-Y H:i:s') }}</td>
+                <td>{{ ride.departureHour|date('H:i:s') }}</td>
+                <td>{{ ride.returnDate|date('d-m-Y H:i:s') }}</td>
+                <td>{{ ride.returnHour|date('H:i:s') }}</td>
+                <td>{{ ride.availableSeat }}</td>
+                <td>{{ ride.price }}</td>
+                <td>{{ ride.createdAt ? ride.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ ride.updatedAt ? ride.updatedAt|date('Y-m-d H:i:s') : '' }}</td>             
+                <td>
+                     <a href="{{ path('back_ride_edit', {'id': ride.id}) }}">edit</a>
+                </td> 
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('back_ride_new') }}">Créer un trajet</a>
+{% endblock %}

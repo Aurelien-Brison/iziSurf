@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rechercher un trajet{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    
+    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+       <script>
+            $(document).ready(function() {
+                $('.js-datepicker').flatpickr({
+                    dateFormat: "d-m-Y",
+                    minDate: "today",
+                    locale: "fr" 
+                });
+                $('.js-timepicker').flatpickr({
+                    enableTime: true,
+                    noCalendar: true,
+                    dateFormat: "H:i",
+                    time_24hr: true
+                });
+            });
+        </script>
+
+{% endblock %}
+
+{% block body %} 
+
+<div class="main lightgreen">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="search__background col-xl-4">
+                <h1 class="form__title">Recherche un trajet</h1>
+            </div>
+            <div class="ride__form form-left col-md-6 col-xl-4">
+                {{ form_start(form) }}
+                {{ form_row(form.cityDeparture, {'attr' : {'autocomplete': 'off'}}) }}
+                {{ form_row(form.spot) }}
+                {{ form_row(form.departureDate) }}
+                <div>
+                    <label for="search-checkbox" class="checkbox__return-text"><input id="search-checkbox" type='checkbox' data-toggle='collapse' data-target='#collapsediv1' checked>  Aller-retour </label>
+                    </input>
+                </div>
+                <div id="return-search">
+                    {{ form_row(form.returnDate) }}
+                </div>
+            </div>
+            <div class="ride__form form-right col-md-6 col-xl-4">
+                {{ form_row(form.availableSeat, {'attr': {'min': '1', 'max': '50'} } ) }}
+                {{ form_row(form.boardMax, {'attr': {'min': '0', 'max': '50'} } ) }}
+                {{ form_row(form.boardSizeMax, {'attr': {'placeholder':'Exemple : 7,6' }} ) }}
+                {{ form_row(form.isSameGender) }}
+                {{ form_row(form.cityLatitude) }}
+                {{ form_row(form.cityLongitude) }}
+                <div class="text-center">
+                    <button type="submit" class="btn btn-orange">Rechercher</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src={{ asset('assets/js/search.js') }}></script>
+
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.18.1"></script>
+<script>
+  var placesAutocomplete = places({
+    appId: 'pl79Q2FHWKJX',
+    apiKey: '34acdddeaace23d62851106e1280fbda',
+    container: document.querySelector('#search_ride_cityDeparture'),
+    templates: {
+      value: function(suggestion) {
+        return suggestion.name;
+      }
+    }
+  }).configure({
+    type: 'city'
+  });
+  placesAutocomplete.on("change", function resultSelected(e) {
+    document.querySelector("#search_ride_cityLatitude").value =
+    e.suggestion.latlng.lat || "";
+    document.querySelector("#search_ride_cityLongitude").value =
+    e.suggestion.latlng.lng || "";
+});
+</script>
+    
+{% endblock %}

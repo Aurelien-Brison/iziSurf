@@ -1,0 +1,60 @@
+{% if app.user is null %}
+	<span class="header__menu-link d-none d-lg-block">
+	<a href="{{ path('user_registration') }}">Inscription</a>
+	<span><a href="{{ path('app_login') }}">Connexion</a></span>
+	</span>
+	<div class="d-lg-none">
+	<div class="row">
+		<div class="col-12">
+		<nav class="navbar navbar-light collapse__menu">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+		</nav>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+		<div class="collapse" id="navbarToggleExternalContent">
+			<div class="collapse__menu">
+			<h5 class="collapse__item"><a href="{{ path('user_registration') }}">Inscription</a></h5>
+			<h5 class="collapse__item"><a href="{{ path('app_login') }}">Connexion</a></h5>
+			</div>
+		</div>
+		</div>
+	</div>
+	</div>
+{% else %}
+	{% if app.user.activationToken is defined %}
+		{% if app.user.activationToken is null %}
+			<span class="header__menu-link d-none d-lg-block">
+				<a>Hey {{ app.user.firstname }}</a>
+				<span><a href="{{ path('app_logout') }}">Déconnexion</a></span>
+			</span>
+			<div>
+				<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-light collapse__menu">
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+					</button>
+					</nav>
+				</div>
+				</div>
+				<div class="row">
+				<div class="col-12">
+					<div class="collapse" id="navbarToggleExternalContent">
+					<div class="collapse__menu">
+						<h5 class="collapse__item"><a href="{{path('ride_add')}}">Propose un trajet</a></h5>
+						<h5 class="collapse__item"><a href="{{path('search')}}"> Cherche un trajet</a></h5>
+						<h5 class="collapse__item"><a href="{{ path('fit', {slug: app.user.slug})}}">Mes trajets</a></h5>
+						<h5 class="collapse__item"><a href="{{ path('profile', {slug: app.user.slug})}}">Mon profil</a></h5>
+						<h5 class="collapse__item"><a href="{{ path('app_logout') }}">Déconnexion</a></h5>
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		{% endif %}
+	{% endif %}
+{% endif %}

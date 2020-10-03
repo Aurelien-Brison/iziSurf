@@ -1,0 +1,64 @@
+{% extends "base.html.twig" %} 
+
+{% block title %}Page introuvable{% endblock %}
+
+{% block body %}
+
+  <div class="row">
+
+    <div class="col-12 col-md-6">
+
+      <img class="page-404-image" src="{{ asset('assets/images/photo-404.jpg') }}" alt="">
+
+    </div>
+
+    <div class="col-12 col-md-6 section-droite">
+
+      <h1 class="page-404-titre">404</h1>
+
+      <h2 class="page-404-oops">OOPS</h2>
+
+      <p class="page-404-para">Page non trouvée </p>
+
+    </div>
+</div>
+  <style>
+
+  .page-404 {
+    /* display: flex;
+    justify-content: space-between; */
+    /* 
+    margin-right: 5rem; */
+    }
+  
+  .page-404-image {
+    height: 40rem;
+    width: 45rem;
+    /* margin-left: 1rem; */
+  }
+
+  .page-404-titre {
+    /* text-align: center; */
+    font-size: 20rem;
+    font-weight: bold;
+  }
+
+  .page-404-oops {
+    /* text-align: center; */
+    font-size: 8rem;
+    font-weight: bold;
+  }
+
+  .page-404-para {
+    /* text-align: center; */
+    font-size: 6rem;
+    font-weight: bold;
+  }
+
+  .section-droite {
+    /* margin-left: 5rem; */
+    text-align: center;
+  }
+  
+  </style>
+{% endblock %}

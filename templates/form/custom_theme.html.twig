@@ -1,0 +1,5 @@
+{% block form_errors %}
+      {% for error in errors %}
+            <p class="custom-errors"><span class="bold">Erreur! </span>{{ error.message }}</p>
+      {% endfor %}
+{% endblock %}

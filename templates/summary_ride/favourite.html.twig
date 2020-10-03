@@ -1,0 +1,10 @@
+{% for fit in currentFit %}
+    {% if fit.isFavorite != true %}
+        <a href="{{ path('favorite', {'idRide': currentRide.id, 'idUser': app.user.id}) }}"><i class="far fa-heart"></i></a>
+    {% else %}
+        <a href="{{ path('favorite', {'idRide': currentRide.id, 'idUser': app.user.id}) }}"><i class="fas fa-heart"></i></a>
+    {% endif %}
+{% endfor %}
+{% if currentFit == [] %}
+    <a href="{{ path('favorite', {'idRide': currentRide.id, 'idUser': app.user.id}) }}"><i class="far fa-heart"></i></a>
+{% endif %}

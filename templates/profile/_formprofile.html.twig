@@ -1,0 +1,33 @@
+{{ form_start(form) }}
+<div class="container">
+      
+      <div class="row float-left">
+          <div class="col-sm ">
+            <div class="mb-5 cercle">
+              
+            </div>
+            
+          </div>
+            <div class="col-sm">
+              {{ form_row(form.firstname) }}
+              {{ form_row(form.lastname) }}
+              {{ form_row(form.age) }}
+              {{ form_row(form.gender) }}
+              {{ form_row(form.phone) }}
+              {{ form_row(form.email) }}
+            </div>
+          <div class="col-sm">
+              {{ form_row(form.level) }}
+              <div class="mt-5">
+                {{ form_row(form.password) }}
+                {{ form_row(form.confirmPassword) }}
+              </div>
+          
+            <button type="submit" class="btn btn-primary mt-4">{{ button_label|default('save') }}</button>
+          </div>
+      </div>
+      
+      
+      
+</div>
+{{ form_end(form) }}

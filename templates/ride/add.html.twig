@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau trajet{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    
+    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+    <script>
+            $(document).ready(function() {
+                $('.js-datepicker').flatpickr({
+                    dateFormat: "d-m-Y",
+                    minDate: "today",
+                    locale: "fr" 
+                });
+                $('.js-timepicker').flatpickr({
+                    enableTime: true,
+                    noCalendar: true,
+                    dateFormat: "H:i",
+                    time_24hr: true
+                });
+            });
+        </script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="main lightgreen">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="add-ride__background col-xl-4">
+            <h1 class="form__title add-ride-title">Propose un trajet</h1>
+        </div>
+        <div class="ride__form form-left col-md-6 col-xl-4">
+            {{ form_start(form) }}
+            {{ form_row(form.cityDeparture, {'attr' : {'autocomplete': 'off'}}) }}
+            {{ form_row(form.placeDeparture) }}
+            {{ form_row(form.spot) }}
+            {{ form_row(form.departureDate) }}
+            {{ form_row(form.departureHour) }}
+            <div class="checkbox">          
+                <label for="search-checkbox" class="checkbox__return-text">
+                    <input id="search-checkbox" type='checkbox' data-toggle='collapse' data-target='#collapsediv1' checked>  
+                Aller-retour </label> 
+            </div>
+            <div id="return-search">
+                {{ form_row(form.returnDate) }}
+                {{ form_row(form.returnHour) }}    
+            </div>
+        </div>
+        <div class="ride__form form-right col-md-6 col-xl-4">
+            <div class="row car-xs-xl">
+                <div class="col-xs-12 col-sm-7 col-md-12 col-lg-7 col-xl-12">
+                    {{ form_errors(form) }}
+                    {{ form_row(form.car, {'attr': {'class': 'car-xl'}}) }}
+                </div>
+                <div class="col-xs-12 col-sm-5 col-md-12 col-lg-5 col-xl-12">
+                    <button class="btn-grey" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Ajoute une voiture
+                    </button>
+                </div>
+            </div>
+            <div class="collapse" id="collapseExample">
+                <div class="carAdd-border">
+                    {{ form_widget(form.carAdd) }}
+                </div>
+            </div>
+            {{ form_row(form.availableSeat, {'attr': {'min': '1', 'max': '50'} } ) }}
+            {{ form_row(form.boardMax, {'attr': {'min': '0', 'max': '50'} } ) }}
+            {{ form_row(form.boardSizeMax, {'attr': {'min': '0', 'max': '15', 'placeholder':'Exemple : 7,6' }} ) }}
+            {{ form_row(form.isSameGender) }}
+            {{ form_row(form.price, {'attr': {'placeholder':'Exemple : 10,50' }} ) }}
+            {{ form_row(form.rideDescription) }}
+            <div class="hidden">
+                {{ form_row(form.cityLatitude) }}
+                {{ form_row(form.cityLongitude) }}
+            </div>
+            {{ form_row(form.optin) }}
+            <div class="text-center">
+                <button type="submit" class="btn btn-orange">Valider</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src={{ asset('assets/js/search.js') }}></script>
+
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.18.1"></script>
+<script>
+  var placesAutocomplete = places({
+    appId: 'pl79Q2FHWKJX',
+    apiKey: '34acdddeaace23d62851106e1280fbda',
+    container: document.querySelector('#ride_cityDeparture'),
+    templates: {
+      value: function(suggestion) {
+        return suggestion.name;
+      }
+    }
+  }).configure({
+    type: 'city'
+  });
+  placesAutocomplete.on("change", function resultSelected(e) {
+    document.querySelector("#ride_cityLatitude").value =
+    e.suggestion.latlng.lat || "";
+    document.querySelector("#ride_cityLongitude").value =
+    e.suggestion.latlng.lng || "";
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+
+
+
+{% if form.car is defined %}
+  <div class="container">
+      {{ form_start(form) }}
+      <div class="row float-left">
+          <div class="col-sm ">
+            <div class="mb-5 cercle">
+              {{ form_row(form.brand) }}
+              {{ form_row(form.model) }}
+              {{ form_row(form.user) }}
+              {{ form_row(form.createdAt|date("m/d/Y")) }}
+            </div>
+          </div>
+      </div>
+      {{ form_end(form) }}
+  </div>
+              
+{% endif %}
+    <button class="btn">{{ button_label|default('créer') }}</button>
+
+
+

@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajouter une voiture{% endblock %}
+
+{% block body %}
+
+<div class="main lightgreen">
+    <div class="container-fluid">
+        <div class="search row">
+            <div class="col-12">
+                <h1 class="white__title">Ajoute une voiture</h1>
+            </div>
+        </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-4">
+                {{ form_start(form) }}
+                    {{ form_row(form.brand, {'label': 'Marque de la voiture'}) }}
+                    {{ form_row(form.model, {'label': 'Modèle de la voiture'}) }}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-orange">Ajouter</button>
+                    </div>
+                {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

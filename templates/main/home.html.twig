@@ -1,0 +1,79 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+<div class="main">
+    <div class="row justify-content-center">
+        {% for message in app.flashes('warning') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% for message in app.flashes('notifiedWhenResult') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+     <div class="row justify-content-center">
+        {% for message in app.flashes('stopResultNotifications') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        {% for message in app.flashes('deleteProfileSuccess') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        {% for message in app.flashes('contactEmail') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-7 home-connected__left"></div>
+        <div class="col-12 col-md-5 home__right">
+            <h3 class="home__buttons"><a href="{{ path('search') }}">Recherche un trajet</a></h3>
+            <h3 class="home__buttons"><a href="{{ path('ride_add') }}">Propose un trajet</a></h3>
+        </div>
+    </div>
+    <div class="darkgreen">
+        <div class="row">
+            <h3 class="col-12 home__rides">Derniers trajets postés</h3>
+        </div>
+        <div class="row justify-content-center">
+            {% for ride in rides %}
+                <div class="home__rides-detail white-detail col-7 col-md-4 col-lg-2">
+                    <a href="{{ path('summary_ride', {id: ride.id}) }}">
+                        <p class="home__rides-firstname">{{ ride.driver.firstname }}</p>
+                        <p>{{ ride.cityDeparture }} <i class="fas search-fa-arrow-right"></i></p>
+                        <p> {{ ride.spot.name }}</p>
+                        <p class="js-search-departureDate orange-text">{{ ride.departureDate |date("Y-m-d") }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row justify-content-center home_van-icon">
+            <i class="fas fa-water"></i>
+        </div>
+        <div class="row home__site-explanations justify-content-center">
+            <div class="col-10 col-md-9">
+                <p>Izisurf est un site de covoiturage spécialement conçu pour les surfeurs. Il a été développé par des amoureux de l'océan et de la glisse. Tu peux partager un trajet, et pourquoi pas une session ! Le surf, c'est bon pour la santé, le covoiturage bon pour la planète, alors y'a plus qu'à !</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment-with-locales.min.js"></script>
+<script src="{{ asset('assets/js/date.js') }}"></script>
+
+{% endblock %}

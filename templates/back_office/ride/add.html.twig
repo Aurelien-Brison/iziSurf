@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau trajet{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+       <script>
+            $(document).ready(function() {
+                $('.js-datepicker').flatpickr({
+                });
+                
+            });
+        </script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="search row">
+        <div class="add-ride__background col-12 col-lg-4">
+            <h1 class="search__title">Propose un trajet</h1>
+        </div>
+        <div class="ride__form col-12 col-lg-4">
+            {{ form_start(form) }}
+            {{ form_row(form.cityDeparture) }}
+            {{ form_row(form.placeDeparture) }}
+            {{ form_row(form.spot) }}
+            {{ form_row(form.departureDate) }}
+            {{ form_row(form.departureHour) }}
+            <div>
+                    <input class="checkbox__return" id="search-checkbox" type='checkbox' data-toggle='collapse' data-target='#collapsediv1' checked><span class="checkbox__return-text">Aller-retour</span>
+                    </input>
+                </div>
+                <div id="return-search">
+                    {{ form_row(form.returnDate) }}
+                    {{ form_row(form.returnHour) }}    
+                </div>
+            </div>
+        <div class="ride__form col-12 col-lg-4">
+                {{ form_row(form.car) }}
+                <p class="car_add"><a href="">Ta voiture n'est pas dans la liste? Ajoutes-en une ici!</a></p>
+                {{ form_row(form.availableSeat, {'attr': {'min': '1', 'max': '50'} } ) }}
+                {{ form_row(form.boardMax, {'attr': {'min': '0', 'max': '50'} } ) }}
+                {{ form_row(form.boardSizeMax, {'attr': {'min': '0', 'max': '15', 'placeholder':'7,6' }} ) }}
+                {{ form_row(form.isSameGender) }}
+                {{ form_row(form.price, {'attr': {'placeholder':'10,50' }} ) }}
+                {{ form_row(form.rideDescription) }}
+                <button type="submit" class="float-right btn btn-form-validate">Valider</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src={{ asset('assets/js/search.js') }}></script>
+
+{% endblock %}

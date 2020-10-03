@@ -1,0 +1,54 @@
+{% if (currentStatus == "En attente")%}
+    <div>   
+        <a class ="button__request" href="{{ path('cancel_enquiry', {'idRide': currentRide.id, 'idUser': app.user.id}) }}"><button type="button" class="btn btn-cancel-ride">Annule ta demande de réservation<i class="far fa-thumbs-down"></i></button></a>
+    </div>
+{% elseif (currentStatus == "Accepté") or (currentStatus == "Refusé") %}
+{% else %}
+    <div>   
+        {% if currentRide.availableSeat == 0 %} 
+        {% else %}                           
+            <a class="button__request" data-toggle="collapse" href="#number_places" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <button type="button" class="btn btn-white">Fais une demande de réservation<i class="far fa-thumbs-up"></i></button>
+            </a>
+            <div class="collapse" id="number_places">
+                <div class="card card-body modal__seat-number-confirm">
+                    <form method="post" action="{{ path('book', {'idRide': currentRide.id, 'idUser': app.user.id}) }}">
+                        <label class="modal__seat-number-label"for="numberPlaces">Confirme le nombre de places que tu veux réserver :</label>
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-end">
+                                <select class="modal__seat-number-select" name="numberPlaces" id="numberPlaces" required>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="col-6 d-flex justify-content-start">
+                                <button class="btn btn-white-white">Valider</button>
+                            </div>
+                        </div>
+                    <form>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}
+<div class="text-center col-md-12 col-lg-12 col-xl-12 left__ride left__ride__cancel"> 
+    {% for  peopleAccept in peoplesAccept %}
+        {% if peopleAccept.user.id == app.user.id %}
+            <a class="btn btn-cancel-ride" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Réservation acceptée ! Besoin d'annuler ?</a>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body modal__seat-number-confirm">
+                    <form method="post" action="{{ path('cancel', {'idRide': currentRide.id, 'idUser': peopleAccept.user.id}) }}">
+                        {# <input type="textarea" name ="cancel" class="form-control" placeholder="Donne-nous la raison de l'annulation du trajet, on la transmettra au conducteur" required>
+                        <button class="btn btn-white-white">Valider</button> #}
+                        <textarea class="modal__cancelRide-textarea" name="cancel" cols="30" rows="10" placeholder="Donne-nous la raison de l'annulation du trajet, on la transmettra au conducteur. Coquinou va !" required></textarea>     
+                        <button class="btn btn-white-white">Envoyer</button>
+                    <form>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>  

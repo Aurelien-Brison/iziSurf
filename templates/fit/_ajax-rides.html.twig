@@ -1,0 +1,82 @@
+<div id="ajax-rideContainer">
+    {# Trajet ALLER SIMPLE #}
+    <template id="js-show-others-single">
+        <div class="result__detail">
+            <div class="js-ride-type-single">
+                <a class="js-single-ride-slug" href="">
+                    <div class="result__detail-title">
+                        <span class="js-single-cityDeparture"></span>
+                        <span><i class="fas fa-arrow-right"></i></span>
+                        <span class="js-single-spotArrival"></span>
+                    </div>
+                    <div class="result__detail-date">
+                        <p class="result__detail-date-title date-return">Aller simple</p>
+                        <p class="js-single-departureDate"></p>
+                        <p class="js-single-departureHour"></p>
+                    </div>
+                    <div class="result__detail-info">
+                        <p>Planche de <span class="js-single-boardSizeMax"> </span>" max </p>
+                        <p class="js-single-isSameGender"></p>
+                        <span class="js-single-availableSeat"></span>
+                        <span class="result__detail-price"><span class="js-single-price"></span>€ par pers.</span></span>
+                    </div>
+                    <div class="result__detail-driver">
+                        <div class="result__detail-driver-image">
+                            <img class="js-single-driver-picture result__detail-image-profile" src= "" alt="photo-conducteur">
+                        </div>
+                        <div class="result__detail-driver-info">
+                            <span class="js-single-driverFirstname"> ,</span>
+                            <span class="js-single-driverLevel result__detail-driver-level"> </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </template>
+    {# Trajet ALLER RETOUR #}
+    <template id="js-show-others-return">
+       <div class="result__detail">
+            <div class="js-ride-type-return">
+                <a class="js-return-ride-slug" href="">
+                    <div class="result__detail-title">
+                        <span class="js-return-cityDeparture"></span>
+                        <span><i class="fas fa-exchange-alt"></i></span>
+                        <span class="js-return-spotArrival"></span>
+                    </div>
+                    <div class="result__detail-date-single">
+                        <p class="result__detail-date-title">Aller</p>
+                        <p class="js-return-departureDate"></p>
+                        <p class="js-return-departureHour"></p>
+                    </div>
+                    <div class="result__detail-date-return">
+                            <p class="result__detail-date-title">Retour</p>
+                            <p class="js-return-returnDate"></p>
+                            <p class="js-return-returnHour"></p>
+                        </div>
+                    <div class="result__detail-info return-border-top">
+                        <p>Planche de <span class="js-return-boardSizeMax"> </span>" max </p>
+                        <p class="js-return-isSameGender"></p>
+                        <span class="js-return-availableSeat"></span>
+                        <span class="result__detail-price"><span class="js-return-price"></span>€ par pers.</span></span>
+                    </div>
+                    <div class="result__detail-driver">
+                        <div class="result__detail-driver-image">
+                            <img class="js-return-driver-picture result__detail-image-profile" src= "" alt="photo-conducteur">
+                        </div>
+                        <div class="result__detail-driver-info">
+                            <span class="js-return-driverFirstname"> ,</span>
+                            <span class="js-return-driverLevel result__detail-driver-level"> </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </template>
+    {# Pas de résultat #}
+    <div id="js-show-noResult">
+        <p class="my-ride__no-result">Pas de résultat</p>
+        <div class="my-ride__no-result-image"></div>
+    </div>
+    {# Bouton back to top #}
+    <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="fas fa-sort-amount-up-alt"></i></a>
+</div> 

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats de la recherche{% endblock %}
+
+{% block body %}
+
+<div class="main lightgreen">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="result__background col-lg-5">
+                <h1 class="form__title">Résultats de la recherche</h1>
+            </div>
+            <div class="result__form col-12 col-lg-7">
+                <div id="js-search-id" data-id={{search.id}}></div>
+                <div class="result__search-details">
+                    {% if search.returnDate|date("Y") == 1900 %}
+                        <div class="result__search-details-child">
+                            <p>{{ search.cityDeparture }} <i class="fas search-fa-arrow-right"></i> {{ search.spot.name }}
+                            <p>
+                            <span class="js-search-departureDate">{{ search.departureDate|date("Y-m-d") }}</span> 
+                                {% if search.availableSeat == 1 %}
+                                    1 passager</p>
+                                {% else %}
+                                    {{ search.availableSeat }} passagers</p>
+                                {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="result__search-details-child">
+                            <p>{{ search.cityDeparture }} <i class="fas search-fa-exchange-alt"></i> {{ search.spot.name }}, 
+                                {% if search.availableSeat == 1 %}
+                                    1 passager</p>
+                                {% else %}
+                                    {{ search.availableSeat }} passagers</p>
+                                {% endif %}
+                            <p>Aller : <span class="js-search-departureDate">{{ search.departureDate|date("Y-m-d") }}</span> <i class="fas search-fa-grip-lines-vertical"></i> Retour : <span class="js-search-returnDate">{{ search.returnDate|date("Y-m-d") }}</span></p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    {% if dDay|length > 0 %}
+                        <div id="dDay-container" class="col-12 result__filters text-center">
+                            {% include 'search/_surrounding-spots.html.twig' %}
+                        </div>
+                    {% else %}
+                        <div id="otherDay-container" class="col-12 result__filters text-center">
+                            {% include 'search/_no-result.html.twig' %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment-with-locales.min.js"></script>
+<script type="text/javascript" src={{ asset('assets/js/search-result.js') }}></script>
+
+{% endblock %}

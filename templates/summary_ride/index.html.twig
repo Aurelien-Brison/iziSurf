@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du trajet{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    {# {% for message in app.flashes('rideRequest') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %} #}
+    <div class="row">
+        {# Afficher les détails du trajet #}
+        <div class="text-center no-gutters col-lg-6 summaryRide__left">
+            {% include "summary_ride/summary.html.twig" %}
+        </div>
+        <div class="text-center col-lg-6 summaryRide__right">
+            {# Affichage en tant que conducteur #}
+            {% if (currentRide.driver.id == app.user.id) %}
+                <div class="row justify-content-center">
+                    {% include "summary_ride/modal-driver.html.twig" %}
+                </div>
+                <div class="row justify-content-center summaryRide__status-border">
+                    <div class="row justify-content-center">
+                        {% include "summary_ride/users-pending.html.twig" %}
+                    </div>
+                    <div class="row justify-content-center">
+                        {% include "summary_ride/users-accepted.html.twig" %}
+                    </div>
+                    <div class="row justify-content-center">
+                        {% include "summary_ride/users-refused.html.twig" %}
+                    </div>
+                </div>
+                <!-- CHAT -->
+                {% include "summary_ride/chat.html.twig" %}
+                <div class="row justify-content-center">
+                    {% include "summary_ride/buttons-edit-delete.html.twig" %}
+                </div>
+            {# Affichage en tant que passager #}
+            {% else %}  
+                <div class="col-xs-12 summaryRide__favourite d-flex justify-content-end"> 
+                    {% include "summary_ride/favourite.html.twig" %}
+                </div>
+                <div class="row justify-content-center">
+                    {% include "summary_ride/modal-driver-as-passenger.html.twig" %}
+                </div>
+                <div class="text-center col-xs-12 left__ride left__ride__book"> 
+                    {% include "summary_ride/passenger-action.html.twig" %}
+                </div>
+                <!-- CHAT -->
+                {% include "summary_ride/chat.html.twig" %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment-with-locales.min.js"></script>
+<script src="{{ asset('./assets/js/chat.js') }}"></script>
+<script src="{{ asset('./assets/js/date.js') }}"></script>
+
+{% endblock %}

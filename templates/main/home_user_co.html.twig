@@ -1,0 +1,38 @@
+{# {% extends "base.html.twig" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+<div class="main darkgreen">
+    <div class="row justify-content-center">
+        {% for message in app.flashes('notifiedWhenResult') %}
+        <div class="alert alert-notified">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-7 home-connected__left"></div>
+        <div class="col-12 col-md-5 home__right">
+            <h3 class="home__buttons"><a href="{{ path('search') }}">Recherche un trajet</a></h3>
+            <h3 class="home__buttons"><a href="{{ path('ride_add') }}">Propose un trajet</a></h3>
+        </div>
+    </div>
+    <div class="row">
+        <h3 class="col-12 home__rides green-background">Derniers trajets postés</h3>
+    </div>
+    <div class="row justify-content-center">
+        {% for ride in rides %}
+            <div class="home__rides-detail white-detail col-7 col-md-4 col-lg-2">
+                <a href="{{ path('summary_ride', {id: ride.id}) }}">
+                    <p class="home__rides-firstname">{{ ride.driver.firstname }}</p>
+                    <p>{{ ride.cityDeparture ~ ' - ' ~ ride.spot.name }}</p>
+                    <p>{{ ride.departureDate |date("d-m-Y") }}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %} #}

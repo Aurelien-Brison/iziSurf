@@ -1,0 +1,78 @@
+<div class="col-12">
+    <h2 class="summaryRide__passenger-type pending-passenger">Demandes en attente</h2>
+</div>
+{% if peoplesWait|length == 0 %}
+    <div class="col-12">
+        <p class="summaryRide__passenger-text no-passenger">Aucune demande en attente</p>
+    </div>
+{% else %}  
+    {% for  peopleWait in peoplesWait %}
+        <!-- Button trigger modal -->
+        <div class="" data-toggle="modal" data-target="#{{peopleWait.user.firstname}}">
+            <img type="button" src="{{asset('assets/images/users/' ~ peopleWait.user.filename )}}" class="rounded-circle summaryRide__passenger-picture" alt="photo">
+            <p class="summaryRide__passenger-text underline">{{ peopleWait.user.firstname }}</p>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="{{peopleWait.user.firstname}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p>Profil de {{peopleWait.user.firstname}}</p>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><img src="{{asset('assets/images/users/' ~ peopleWait.user.filename )}}" class="rounded-circle modal-picture" alt="photo"></p>
+                        <div class="modal__profil-info">
+                            <p>{{peopleWait.user.age}} ans</p>
+                            <p>Niveau {{peopleWait.user.level.name}}</p>
+                            <p>{{peopleWait.user.phone}}</p>
+                        </div>
+                        <div class="modal__comments">
+                            <h5 class="modal__comments-title">Avis</h5>
+                            {% if peopleWait.user.reviews is empty %}
+                                <p>{{peopleWait.user.firstname}} n'a pas encore d'avis, sorry</p>
+                            {% else %}
+                                {% for review in peopleWait.user.reviews %}              
+                                    {% if loop.revindex0 < 2 %}                             
+                                        <p>
+                                            <i class="fas modal-summary-fa-quote-left"></i>
+                                            <span class="allReviews-text">{{review.comment}}</span>
+                                            <span><i class="fas modal-summary-fa-quote-right"></i></span>
+                                        </p>
+                                        <div class="allReviews-date margin-modal-review-summary">
+                                            <p>* par {{review.author}}, le <span class="js-review-date">{{review.createdAt|date("Y-m-d")}}</span></p>
+                                        </div>        
+                                    {% endif %}
+                                {% endfor %}
+                                {% if peopleWait.user.reviews|length > 2 %}
+                                    <div class="see-more-reviews">
+                                        <a href="{{ path('review', {user: peopleWait.user.id}) }}">Voir tous les avis de {{ peopleWait.user.firstname }}</a>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                        <div class="modal-footer-no-bootstrap">
+                            <div class="summaryRide__pending-enquiry">
+                                <p class="summaryRide__pending-numberOfPlace">{{ peopleWait.user.firstname }} voudrait réserver {{ peopleWait.numberPlacesRequested}}
+                                    {% if peopleWait.numberPlacesRequested > 1 %}
+                                        <span> places sur ton trajet :</span>
+                                    {% else %}
+                                        <span> place sur ton trajet :</span>
+                                    {% endif %}
+                                </p>
+                                <a href="{{ path('refuse', {'idRide': currentRide.id, 'idUser': peopleWait.user.id}) }}"> 
+                                    <button type="button" class="btn btn-delete-profile btn-driver-response">Refuser {{peopleWait.user.firstname}}</button>
+                                </a>
+                                <a href="{{ path('accept', {'idRide': currentRide.id, 'idUser': peopleWait.user.id}) }}">
+                                    <button type="button" class="btn btn-ride-edit btn-driver-response" >Accepter {{peopleWait.user.firstname}}</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}  

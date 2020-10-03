@@ -1,0 +1,122 @@
+{% if otherDay|length > 0 %}
+    <div class="col-12">
+        <h2 class="noresult noresult-page">Aucun résultat pour cette recherche</h2>
+        <p class="noresult-text">Autres trajets qui pourraient t'intéresser :</p>
+    </div>
+    {% if otherDay|length > 3 %}
+    <button class="btn btn-result-filter dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Filtrer par
+    </button>
+    <div class="collapse" id="collapseExample">
+        <ul class="dropdown ul-result-filter">
+            <li class="dropdown-item active-filter js-other-rides otherDay-date">Date croissante</li>
+            <li class="dropdown-item btn-filter js-other-rides otherDay-cityDeparture">Distance du point de départ</li>
+            <li class="dropdown-item btn-filter js-other-rides otherDay-spotArrival">Distance du spot d'arrivée</li>
+            <li class="dropdown-item btn-filter js-other-rides otherDay-price">Prix croissant</li>
+        </ul>
+    </div>
+    {% endif %}
+    <div class="ajax-resultContainer">
+        {# Trajet ALLER SIMPLE #}
+        <template id="js-show-others-single">
+            <div class="result__detail">
+                <div class="js-ride-type-single">
+                    <a class="js-single-ride-slug" href="">
+                        <div class="result__detail-title">
+                            <span class="js-single-cityDeparture"></span>
+                            <span><i class="fas fa-arrow-right"></i></span>
+                            <span class="js-single-spotArrival"></span>
+                        </div>
+                        <div class="result__detail-date">
+                            <p class="result__detail-date-title date-return">Aller simple</p>
+                            <p class="js-single-departureDate"></p>
+                            <p class="js-single-departureHour"></p>
+                        </div>
+                        <div class="result__detail-info">
+                            <p>Planche de <span class="js-single-boardSizeMax"> </span>" max </p>
+                            <p class="js-single-isSameGender"></p>
+                            <span class="js-single-availableSeat"></span>
+                            <span class="result__detail-price"><span class="js-single-price"></span>€ par pers.</span></span>
+                        </div>
+                        <div class="result__detail-driver">
+                            <div class="result__detail-driver-image">
+                                <img class="js-single-driver-picture result__detail-image-profile" src= "" alt="photo-conducteur">
+                            </div>
+                            <div class="result__detail-driver-info">
+                                <span class="js-single-driverFirstname"> ,</span>
+                                <span class="js-single-driverLevel result__detail-driver-level"> </span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </template>
+        {# Trajet ALLER RETOUR #}
+        <template id="js-show-others-return">
+        <div class="result__detail">
+                <div class="js-ride-type-return">
+                    <a class="js-return-ride-slug" href="">
+                        <div class="result__detail-title">
+                            <span class="js-return-cityDeparture"></span>
+                            <span><i class="fas fa-exchange-alt"></i></span>
+                            <span class="js-return-spotArrival"></span>
+                        </div>
+                        <div class="result__detail-date-single">
+                            <p class="result__detail-date-title">Aller</p>
+                            <p class="js-return-departureDate"></p>
+                            <p class="js-return-departureHour"></p>
+                        </div>
+                        <div class="result__detail-date-return">
+                                <p class="result__detail-date-title">Retour</p>
+                                <p class="js-return-returnDate"></p>
+                                <p class="js-return-returnHour"></p>
+                            </div>
+                        <div class="result__detail-info return-border-top">
+                            <p>Planche de <span class="js-return-boardSizeMax"> </span>" max </p>
+                            <p class="js-return-isSameGender"></p>
+                            <span class="js-return-availableSeat"></span>
+                            <span class="result__detail-price"><span class="js-return-price"></span>€ par pers.</span></span>
+                        </div>
+                        <div class="result__detail-driver">
+                            <div class="result__detail-driver-image">
+                                <img class="js-return-driver-picture result__detail-image-profile" src= "" alt="photo-conducteur">
+                            </div>
+                            <div class="result__detail-driver-info">
+                                <span class="js-return-driverFirstname"> ,</span>
+                                <span class="js-return-driverLevel result__detail-driver-level"> </span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </template>
+        <template id="js-edit-search-otherDay">
+            <div class="row justify-content-center js-edit-remove"> 
+                <div class="col-lg-12 text-center">
+                    {% if app.user.gender == "Féminin" %}
+                        <p class="notConvinced">Pas convaincue ?</p>
+                    {% else %}
+                        <p class="notConvinced">Pas convaincu ?</p>
+                    {% endif %}
+                    <button class="btn btn-orange btn-edit-search"><a href="{{ path('search_edit', {'id': search.id}) }}">Modifier la recherche</a></button>
+                    <button id="js-notified-when-result" class="btn btn-lightgreen btn-get-notified"><a href="{{ path('search_notified', {'search': search.id}) }}">Créer une alerte email</a></button>
+                </div>
+            </div>
+        </template>
+    </div>
+{% else %}
+    <div class="col-xl-6 offset-xl-3">
+        <h2 class="noresult noresult-page">Aucun  trajet disponible</h2>
+        <p class="noresult-text">
+            Pour info, les recherches se font dans un rayon de 30 km autour du point de départ et du spot d'arrivée, ainsi que sur une période de -10j/+10j à partir de la date choisie.
+        </p>
+    </div>
+</div>
+</div>
+<div class="row justify-content-center"> 
+    <div class="col-lg-12 text-center">
+        <button class="btn btn-orange btn-edit-search"><a href="{{ path('search_edit', {'id': search.id}) }}">Modifier la recherche</a></button>
+        <button id="js-notified-when-result" class="btn btn-lightgreen btn-get-notified"><a href="{{ path('search_notified', {'search': search.id}) }}">Créer une alerte email</a></button>
+    </div>
+</div>
+{% endif %}

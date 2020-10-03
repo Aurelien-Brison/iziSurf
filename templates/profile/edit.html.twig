@@ -1,0 +1,204 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+
+<div class="main lightgreen">
+    <div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="profile col-xl-4">
+				<h1 class="profile__title">Profil</h1>
+					<p class="profile__name">{{ user.firstname }} {{ user.lastname }}</p>
+					{% if user.gender == "Féminin" %}
+					<img class="rounded-circle" src="{{ asset('assets/images/avatar-femme-colorful.jpg') }}" alt="avatar-femme">
+					{% else %}
+					<img class="rounded-circle" src="{{ asset('assets/images/avatar-homme-colorful.jpg') }}" alt="avatar-homme">
+					{% endif %}
+			</div>
+			{# Menu 2 colonnes #}
+			<div class="col-lg-4 col-xl-2 d-none d-lg-block">
+				<div class="card card-driver card-profile">
+					<div class="card-header my-ride__card-header orange-card-header">
+					Infos
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="profile-info active">Infos perso</li>
+						<li class="profile-picture list-group-item">Photo de profil</li>
+					</ul>
+				</div>
+				<div class="card card-driver card-profile">
+					<div class="card-header my-ride__card-header orange-card-header">
+					Voitures
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="profile-car list-group-item">Mes voitures</li>
+						<li class="profile-car-add list-group-item ">Ajouter une voiture</li>
+					</ul>
+				</div>
+			</div>
+			{# Menu 1 colonne #}
+			<div class="dropdown d-lg-none">
+				<a class="btn btn-myride-menu dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Informations que tu veux afficher
+				</a>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<ul>
+						<li class="profile-info active">
+							<p>Infos perso</p>
+						</li>
+						<li class="profile-picture list-group-item">
+							<p>Photo de profil</p>
+						</li>
+						<li class="profile-car list-group-item">
+							<p>Mes voitures</p>
+						</li>
+						<li class="profile-car-add list-group-item">
+							<p>Ajouter une voiture</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			{# Infos perso #}
+			<div class="col-lg-8 col-xl-6" id="profile-info-col">
+				<div id="showProfileInfo">   
+					<h3 class="my-ride__h3 profile-h3">Infos perso</h3>
+					<div class="row justify-content-center">
+						{% for message in app.flashes('profileSuccess') %}
+						<div class="alert alert-success">
+							{{ message }}
+						</div>
+						{% endfor %}
+					</div>
+					<div class="row justify-content-center">
+						{% for message in app.flashes('pictureSuccess') %}
+						<div class="alert alert-success">
+							{{ message }}
+						</div>
+						{% endfor %}
+					</div>
+					<div class="row justify-content-center">
+						{% for message in app.flashes('addCarSuccess') %}
+						<div class="alert alert-success">
+							{{ message }}
+						</div>
+						{% endfor %}
+					</div>
+					<div class="row justify-content-center">
+						{% for message in app.flashes('removeCarSuccess') %}
+						<div class="alert alert-success">
+							{{ message }}
+						</div>
+						{% endfor %}
+					</div>
+					{{ form_start(profileForm) }}
+					<div class="profile__info-form row">
+						<div class="col-sm-8 offset-sm-2 col-md-6 offset-md-0 col-xl-5 offset-xl-1">
+							{{ form_row(profileForm.firstname) }}
+							{{ form_row(profileForm.lastname) }}
+							{{ form_row(profileForm.age) }}
+							{{ form_row(profileForm.gender) }}
+						</div>
+						<div class="col-sm-8 offset-sm-2 col-md-6 offset-md-0 col-xl-5">
+							{{ form_row(profileForm.email) }}
+							{{ form_row(profileForm.phone) }}
+							{{ form_row(profileForm.level) }}
+							<button type="submit" class="btn btn-orange btn-little-margin">Mettre à jour</button>
+							{{ form_end(profileForm)}}
+							<div class="text-center">
+								<form method="post" action="{{ path('profile_delete', {'id': user.id}) }}" onsubmit="return confirm('Attention, cette action est irréversible. Veux-tu vraiment supprimer ton profil ?');">
+									<input type="hidden" name="_method" value="DELETE">
+									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+									<button class="btn btn-delete-profile">Supprimer le compte</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{# Photo de profil #}
+			<div class="col-lg-8 col-xl-6" id="profile-picture-col">
+				<div id="showProfilePicture">   
+					<h3 class="my-ride__h3 profile-h3">Photo de profil</h3>
+					<img class="rounded-circle profile-picture-circle mx-auto" src="{{ asset('assets/images/users/' ~ user.filename) }}" alt="photo-profil">
+					{{ form_start(pictureForm) }}
+						<div class="col-sm-8 offset-sm-2">
+							{{ form_row(pictureForm.imageFile) }}
+						</div>
+						<div class="text-center">
+							<button type="submit" class="btn btn-orange profile__picture-form">Mettre à jour</button>
+						</div>
+					{{ form_end(pictureForm)}}
+				</div>
+			</div>
+
+			{# Voitures #}
+			<div class="col-lg-8 col-xl-6" id="profile-car-col">
+				<div id="showProfileCar">   
+					<h3 class="my-ride__h3 profile-h3">Mes voitures</h3>
+					{% if user.cars|length > 0 %}
+						<div class="car__form">
+							{% for car in user.cars %}
+								<form method="post" action="{{ path('profile_car_delete', {'id': car.id}) }}" onsubmit="return confirm('Es-tu sûr de vouloir supprimer cette voiture?');">
+									<p class="profile__text-car">{{ car.brand }} {{ car.model }}</p><button class="btn btn-red">Supprimer</button>
+								</form>
+							{% endfor %}
+							<div class="my-ride__no-result-image car__result-image"></div>
+						</div>
+					{% else %}
+						<p class="my-car__no-result">Aucune voiture enregistrée</p>
+						<div class="my-ride__no-result-image car__no-result-image"></div>
+					{% endif %}
+				</div>
+			</div>
+
+			{# Ajouter une voiture #}
+			<div class="col-lg-8 col-xl-6" id="profile-car-add-col">
+				<div id="showProfileCarAdd">   
+					<h3 class="my-ride__h3 profile-h3">Ajouter une voiture</h3>
+					<div class="carAdd__form col-sm-6 offset-sm-3">
+						{{ form_start(carForm)}}
+							{{ form_row(carForm.brand) }}
+							{{ form_row(carForm.model) }}
+							<div class="text-center">
+								<button type="submit" class="btn btn-orange profile__picture-form">Ajouter</button>
+							</div>
+						{{ form_end(carForm)}}
+					</div>
+				</div>
+			</div>
+        </div>
+  	</div>
+</div>
+
+<script type="text/javascript" src={{ asset('assets/js/profile.js') }}></script>
+
+{% block javascripts %}
+	<script>
+		// $('.custom-file-input').on('change', function(event) {
+		// 	var inputFile = event.currentTarget;
+		// 	$(inputFile).parent()
+		// 		.find('.custom-file-label')
+		// 		.html(inputFile.files[0].name);
+		// });
+
+		$('.custom-file-input').on('change', function(event) {
+                var inputFile = event.currentTarget;
+                var name = inputFile.files[0].name;        
+                if(name.length >= 30) {
+                  var startName = name.substr(0, 30) + '...';
+                } else {
+                  startName = name;
+                }
+                console.log(startName);
+                $(inputFile).parent()
+                    .find('.custom-file-label')
+                    .text(startName);
+            });
+            
+	</script>
+{% endblock %}
+
+{% endblock %}

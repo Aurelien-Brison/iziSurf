@@ -1,0 +1,98 @@
+<div class="summaryRide__chat">
+    <button type="button" class="btn btn-chat" data-toggle="modal" data-target="#chat" id="chat-button" data-backdrop="static" data-keyboard="false">
+        Discute avec les membres du trajet  <i class="fas fa-comment"></i>
+    </button>
+    <div class="modal fade" id="chat" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header modal-header-chat">
+                    <p>Discussion instantanée</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body modal-body-chat">
+                    <form>
+                        <hidden cols="30" rows="10">  
+                    </form> 
+                    <div id="messages">
+                        {% set lastId = '' %}
+                        {% for message in allMessages %}
+                            {% if app.user.id == message.user.id %}
+                                    <p class="author-message user-{{message.user.id}}" data-id="{{ message.id }}">
+                                    <span class="modal__chat-firstname">{{message.user.firstname}}</span> 
+                                    <span class="js-full-date modal__chat-date">{{ message.createdAt|date("Y-m-d H:i:s")}} </span>
+                                    <br>{{message.content}}</p>
+                                    {% set lastId = message.id %}
+                            {% else %}
+                                    <p class="reader-message user-{{message.user.id}}" data-id="{{ message.id }}">
+                                    <span class="modal__chat-firstname">{{message.user.firstname}}</span> 
+                                    <span class="js-full-date modal__chat-date">{{ message.createdAt|date("Y-m-d H:i:s")}} </span>
+                                    <br>{{message.content}}</p>
+                                    {% set lastId = message.id %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="row modal__chat-new-message">
+                        <form action=" {{ path('load', {'userId': app.user.id, 'rideId': currentRide.id})}}" method="POST" id="form-load">
+                            <input id="lastId" type="hidden" value={{lastId}} name="lastId">
+                        </form>
+                        <form action="{{ path('message', {'userId': app.user.id, 'rideId': currentRide.id}) }}" method="POST" id="form-chat" class="form-chat-new-message">
+                            <button class="btn btn-orange margin-btn-send-chat" id="send">Envoyer</button>
+                            <textarea class="modal__chat-textarea" name="message" id="message" cols="30" rows="10" placeholder="Laisse un message..."></textarea>     
+                        </form>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>    
+   {#}
+                    <div class="row">
+                        <div id="messages">
+                            {% set lastId = '' %}
+                            {% for message in allMessages %}
+                                {% if app.user.id == message.user.id %}
+                                    <p class="author-message user-{{message.user.id}}" data-id="{{ message.id }}">
+                                {% else %}
+                                    <p class="reader-message user-{{message.user.id}}" data-id="{{ message.id }}">
+                                {% endif %}
+                                <span class="modal__chat-firstname">{{message.user.firstname}}</span> 
+                                <span class="js-full-date modal__chat-date">{{ message.createdAt|date("Y-m-d H:i:s")}} </span>
+                                <br>{{message.content}}</p>
+                                {% set lastId = message.id %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row modal__chat-new-message">
+                        <form action=" {{ path('load', {'userId': app.user.id, 'rideId': currentRide.id})}}" method="POST" id="form-load">
+                            <input id="lastId" type="hidden" value={{lastId}} name="lastId">
+                        </form>
+                        <form action="{{ path('message', {'userId': app.user.id, 'rideId': currentRide.id}) }}" method="POST" id="form-chat">
+                            <textarea class="modal__chat-textarea" name="message" id="message" cols="30" rows="10" placeholder="Laisse un message..."></textarea>     
+                            <button class="btn btn-orange margin-btn-send-chat" id="send">Envoyer</button>
+                        </form>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+ <!-- Modal chat -->
+    {# <div class="modal fade" id="chat" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header modal-header-chat">
+                    <p>Discussion instantanée</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body modal-body-chat">
+                    <form>
+                        <hidden cols="30" rows="10">  
+                    </form>
+                    
+                    #}
