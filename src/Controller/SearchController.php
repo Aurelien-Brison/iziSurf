@@ -86,10 +86,6 @@ class SearchController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        // if(!$this->isGranted('EDIT', $search)){
-        //     throw $this->createNotFoundException('Page introuvable');
-        // }
-
         $user = $this->getUser()->getId();
         $form = $this->createForm(SearchRideType::class, $search , ['user' => $user]);
 

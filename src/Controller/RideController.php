@@ -226,6 +226,5 @@ class RideController extends AbstractController
 
         return $this->redirectToRoute('home');
     }
-
-    
+  
 }

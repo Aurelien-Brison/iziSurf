@@ -23,32 +23,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class ProfileController extends AbstractController
 {
-   
-    // /**
-    //  * @Route("/profil/{id}", name="profil")
-    //  * @IsGranted("ROLE_USER", message="Accès non autorisé")
-    //  */
-    // public function profil(User $user, UserRepository $userRepository)
-    // {
-    //     if ($this->getUser() == null){
-
-    //         return $this->redirectToRoute('app_login');
-    //     }
-
-    //     $id = $user->getId();
-    //     $userCurrent =  $this->getUser()->getId();
-    //     if ($userCurrent !== $id){
-    //         throw $this->createNotFoundException('Page introuvable');
-    //     }
-
-
-    //     $userRepo = $userRepository->findBy(['id' => $user]);
-
-    //     return $this->render('profil/profil.html.twig', [
-    //         'user' => $userRepo
-    //     ]);
-    // }
-
     /**
      * @Route("profil/{slug}", name="profile", methods={"GET","POST"})
      * @IsGranted("ROLE_USER", message="Accès non autorisé")
@@ -92,16 +66,6 @@ class ProfileController extends AbstractController
         $profileForm->handleRequest($request);
 
         if ($profileForm->isSubmitted() && $profileForm->isValid()) {
-
-            // // on va chercher la donnée du password non mappé
-            // $newPassword = $form->get('password')->getData();
-            
-            // if (!empty($newPassword)){
-
-            //     $passwordHash = $userPasswordEncoder->encodePassword($user, $user->getPassword());
-            //     // On écrase le mot de passe du $user avec le mot de passe haché
-            //     $user->setPassword($passwordHash);
-            // }
             
             $user->setUpdatedAt(new \DateTime('now'));
            

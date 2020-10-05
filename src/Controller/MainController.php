@@ -82,27 +82,4 @@ class MainController extends AbstractController
         return $this->render('main/page404.html.twig');
     }
 
-    // /**
-    //  * @Route("/home-connecte", name="home_connecte")
-    //  * @IsGranted("ROLE_USER", message="Accès non autorisé")
-    //  */
-    // public function homeConnecte(RideRepository $rideRepository)
-    // {
-    //     $user = $this->getUser();
-        
-    //     if ($user->getActivationToken()) {
-    //         throw $this->createAccessDeniedException('Vous devez activer votre compte');
-    //     }
-
-    //     if ($this->getUser() == null){
-            
-    //         return $this->redirectToRoute('app_login');
-    //     }
-        
-    //     $rides = $rideRepository->findBy([], ['createdAt' => 'DESC'], 4, 0);
-
-    //     return $this->render('main/home_user_co.html.twig', [
-    //         'rides' => $rides
-    //     ]);
-    // }
 }

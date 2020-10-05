@@ -52,24 +52,4 @@ class CarController extends AbstractController
         ]);
     }
     
-
-    // /**
-    //  * @Route("/vehicule/{id}", name="car_delete", methods={"DELETE"})
-    //  * @IsGranted("ROLE_USER", message="Accès non autorisé")
-    //  */
-    // public function delete(Request $request, Car $car): Response
-    // {
-    //     if ($this->getUser() == null){
-            
-    //         return $this->redirectToRoute('app_login');
-    //     }
-
-    //     if ($this->isCsrfTokenValid('delete'.$car->getId(), $request->request->get('_token'))) {
-    //         $entityManager = $this->getDoctrine()->getManager();
-    //         $entityManager->remove($car);
-    //         $entityManager->flush();
-    //     }
-
-    //     return $this->redirectToRoute('home');
-    // }
 }

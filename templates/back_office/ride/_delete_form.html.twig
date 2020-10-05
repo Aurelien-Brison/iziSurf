@@ -1,5 +1,0 @@
-<form method="post" action="{{ path('back_ride_delete', {'id': ride.id}) }}" onsubmit="return confirm('Es-tu sûr de vouloir supprimer ce trajet?');">
-    {# <input type="hidden" name="_method" value="DELETE">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ ride.id) }}"> #}
-    <button class="float-right btn btn-danger">Supprimer le trajet</button>
-</form>

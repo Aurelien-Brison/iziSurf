@@ -59,13 +59,9 @@ class MessageController extends AbstractController
             return $this->json([
                 $tableauMessage
             ]);   
-        }
- 
-        
+        }     
         
     }
-
-
 
 }
 
